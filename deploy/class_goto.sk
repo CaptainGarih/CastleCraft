@@ -1,0 +1,88 @@
+#       Goto BEDWARS
+command /gotobedwars:
+
+    cooldown: 5 seconds
+    cooldown message: &ePlease wait 5 seconds between each execution of this command.
+    trigger:
+        if "%player's world%" contains "world":
+
+            wait 1 tick
+        
+        else:
+            stop
+
+        send bungee player named "%player%" to bungee server named "bedwars"
+
+command /gotofindthetraitor:
+
+    cooldown: 5 seconds
+    cooldown message: &ePlease wait 5 seconds between each execution of this command.
+    trigger:
+        if "%player's world%" contains "world":
+
+            wait 1 tick
+        
+        else:
+            stop
+
+        send bungee player named "%player%" to bungee server named "findthetraitor"
+
+command /gotobrainrush:
+
+    cooldown: 5 seconds
+    cooldown message: &ePlease wait 5 seconds between each execution of this command.
+    trigger:
+        if "%player's world%" contains "world":
+
+            wait 1 tick
+        
+        else:
+            stop
+
+        send bungee player named "%player%" to bungee server named "brainrush"
+
+command /gotoarcade:
+
+    cooldown: 5 seconds
+    cooldown message: &ePlease wait 5 seconds between each execution of this command.
+    trigger:
+        if "%player's world%" contains "world":
+
+            wait 1 tick
+        
+        else:
+            stop
+
+        send bungee player named "%player%" to bungee server named "arcade"
+
+on inventory click:
+
+    if player's world is "world":
+
+        if name of event-item contains "&b&lBed &c&lWars":
+
+            close player's inventory
+            wait 2 ticks
+            make player execute command "/gotobedwars"
+        
+        if name of event-item contains "&c&lFind The Traitor":
+
+            close player's inventory
+            wait 2 ticks
+            make player execute command "/gotofindthetraitor"
+
+        if name of event-item contains "&d&lArcade":
+
+            close player's inventory
+            wait 2 ticks
+            make player execute command "/gotoarcade"
+        
+        if name of event-item contains "&b&lBrain &e&lRush":
+
+            close player's inventory
+            wait 2 ticks
+            make player execute command "/gotobrainrush"
+
+    else:
+
+        stop
