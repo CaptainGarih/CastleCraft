@@ -14,17 +14,17 @@ command /gotobedwars:
 
 command /gotothetower:
 
-        cooldown: 5 seconds
-        cooldown message: &ePlease wait 5 seconds between each execution of this command.
-        trigger:
-            if "%player's world%" contains "world":
+    cooldown: 5 seconds
+    cooldown message: &ePlease wait 5 seconds between each execution of this command.
+    trigger:
+        if "%player's world%" contains "world":
     
-                wait 1 tick
+            wait 1 tick
             
-            else:
-                stop
+        else:
+            stop
     
-            send bungee player named "%player%" to bungee server named "thetower"
+        send bungee player named "%player%" to bungee server named "thetower"
 
 command /gotofindthetraitor:
 
