@@ -1,4 +1,3 @@
-#       Goto BEDWARS
 command /gotobedwars:
 
     cooldown: 5 seconds
@@ -12,6 +11,20 @@ command /gotobedwars:
             stop
 
         send bungee player named "%player%" to bungee server named "bedwars"
+
+command /gotothetower:
+
+        cooldown: 5 seconds
+        cooldown message: &ePlease wait 5 seconds between each execution of this command.
+        trigger:
+            if "%player's world%" contains "world":
+    
+                wait 1 tick
+            
+            else:
+                stop
+    
+            send bungee player named "%player%" to bungee server named "thetower"
 
 command /gotofindthetraitor:
 
@@ -82,6 +95,12 @@ on inventory click:
             close player's inventory
             wait 2 ticks
             make player execute command "/gotobrainrush"
+        
+        if name of event-item contains "&a&lThe Tower":
+
+            close player's inventory
+            wait 2 ticks
+            make player execute command "/gotothetower"
 
     else:
 
