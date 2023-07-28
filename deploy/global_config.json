@@ -1,0 +1,4 @@
+variables:
+
+    {global_config.server/name}="bedwars"
+    {global_config.server/display_name}="Bed Wars"
