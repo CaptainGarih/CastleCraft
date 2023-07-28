@@ -6,4 +6,4 @@ options:
 on load:
 
     set {global_config.server/name} to {@global_config.server/name}
-    set {global_config.server/name} to {@global_config.server/display_name}
+    set {global_config.server/display_name} to {@global_config.server/display_name}
