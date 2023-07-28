@@ -20,7 +20,7 @@ command serverlist [<text>] [<number>]:
 every 5 seconds:
 
     set {_count} to 0
-    set {_server} to {global_config.server/name}
+    set {_server} to "%{global_config.server/name}%"
     loop all players:
 
         add 1 to {_count}
