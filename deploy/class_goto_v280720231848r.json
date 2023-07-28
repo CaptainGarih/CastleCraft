@@ -54,6 +54,20 @@ command /gotobrainrush:
 
         send bungee player named "%player%" to bungee server named "brainrush"
 
+command /gotosumo:
+
+        cooldown: 5 seconds
+        cooldown message: &ePlease wait 5 seconds between each execution of this command.
+        trigger:
+            if "%player's world%" contains "world":
+    
+                wait 1 tick
+            
+            else:
+                stop
+    
+            send bungee player named "%player%" to bungee server named "sumo"
+
 command /gotoarcade:
 
     cooldown: 5 seconds
@@ -101,6 +115,12 @@ on inventory click:
             close player's inventory
             wait 2 ticks
             make player execute command "/gotothetower"
+        
+        if name of event-item contains "&c&lSumo":
+
+            close player's inventory
+            wait 2 ticks
+            make player execute command "/gotosumo"
 
     else:
 
