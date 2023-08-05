@@ -1,9 +1,0 @@
-options:
-
-    global_config.server/name: "bedwars"
-    global_config.server/display_name: "Bed Wars"
-
-on load:
-
-    set {global_config.server/name} to {@global_config.server/name}
-    set {global_config.server/display_name} to {@global_config.server/display_name}
