@@ -43,7 +43,7 @@ function ARTEMISLINK_TransferPlayer(p: player, config: text, server: text):
 
 				if {_config} contains "--nofast":
 
-					chance of 25%:
+					chance of 10%:
 
 						set {_serverfound?} to true
 
@@ -58,7 +58,7 @@ function ARTEMISLINK_TransferPlayer(p: player, config: text, server: text):
 
 					else:
 
-						chance of 75%:
+						chance of 25%:
 
 							set {_serverfound?} to true
 
