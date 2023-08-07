@@ -1,0 +1,5 @@
+on quit:
+
+    make all servers execute console command "kasaprofile sync %player% %{kasaprofile.profile/data.rank::%player%}% %{kasaprofile.profile/data.money::%player%}%"
+    wait 1 second
+    make all servers execute console command "kasaprofile sync_socials %player% %{kasaprofile.profile/data.socials_1::%player%}% %{kasaprofile.profile/data.socials_2::%player%}% %{kasaprofile.profile/data.socials_3::%player%}%"
