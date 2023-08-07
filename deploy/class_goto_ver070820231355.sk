@@ -17,10 +17,10 @@ command /lobby:
 
         if "%player's world%" contains "world":
 
-            send "&cYou cannot return to the lobby during a game!" to player
-            stop
+            wait 1 tick
         
         else:
+            send "&cYou cannot return to the lobby during a game!" to player
             stop
 
         set {_server} to "lobby"
