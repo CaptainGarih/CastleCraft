@@ -17,7 +17,8 @@ command /lobby:
 
         if "%player's world%" contains "world":
 
-            wait 1 tick
+            send "&cYou cannot return to the lobby during a game!" to player
+            stop
         
         else:
             stop
