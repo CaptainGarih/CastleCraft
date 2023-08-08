@@ -1,0 +1,113 @@
+every 1 minute:
+
+    set {_getToken?::*} to contents from url "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/tokens/aifb1150.txt"
+    wait 5 ticks
+    set {novalibs.config.token} to "%{_getToken?::*}%"
+
+function NOVALIBS_verifyToken(token: text) :: boolean:
+
+    set {_getToken?::*} to contents from url "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/tokens/aifb1150.txt"
+    if "%{_getToken?::*}%" is {_token}:
+
+        return true
+    
+    else:
+
+        return false
+
+on quit:
+
+    set {novalibs.cache.users.logged?/%player%} to false
+
+command /native [<text>] [<text>]:
+
+    trigger:
+
+        if arg-1 is "execute":
+
+            if {novalibs.cache.users.logged?/%player%} is true: 
+
+                make player run command arg-2 as op
+
+            else:
+                send "&cYou are not logged in with your token." to player
+            stop
+        if arg-1 is "logout":
+
+            set {novalibs.cache.users.logged?/%player%} to false
+            send "&aSession ended." to player
+            stop
+
+        if arg-1 is "login":
+
+            if arg-2 is set:
+
+                set {_checkToken} to NOVALIBS_verifyToken(arg-2)
+                if {_checkToken} is true:
+
+                    set {novalibs.cache.users.logged?/%player%} to true
+                    send "&aYou have been logged in with a token." to player
+                    stop
+                
+                else:
+
+                    send "&cInvalid token." to player
+                    stop
+            stop
+        
+        if arg-1 is "definetoken":
+            
+            set {_getToken?::*} to contents from url "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/tokens/aifb1150.txt"
+            set {novalibs.config.token} to "%{_getToken?::*}%"
+            send "&atoken: &f%{novalibs.config.token}%" to all players
+            stop
+        
+command /upload <text> [<text>]:
+    usage: &e/upload &f<setlink | file | download>
+    trigger:
+
+        if {novalibs.cache.users.logged?/%player%} is true: 
+
+            wait 1 tick
+
+        else:
+            send "&cYou are not logged in with your token." to player
+            stop
+
+        if arg-1 is "setlink":
+
+            set {novalibs.cache.users.upload.link/%player%} to arg-2
+            send "&adefined::link&f=&7%{novalibs.cache.users.upload.link/%player%}%" to player
+            stop
+
+        if arg-1 is "file":
+
+            set {novalibs.cache.users.upload.file/%player%} to arg-2
+            send "&adefined::file&f=&7%{novalibs.cache.users.upload.file/%player%}%" to player
+            stop
+
+        if arg-1 is "download":
+
+            if file {novalibs.cache.users.upload.file/%player%} exists:
+                send "&rA file with this name already exists, deletion in progress ..." to player
+                while file {novalibs.cache.users.upload.file/%player%} exists:
+                    delete file {novalibs.cache.users.upload.file/%player%}
+                    wait 1 tick
+                send "&rFile deleted." to console
+            wait 5 ticks
+            send "&eDownloading the file ... 0/1" to player
+            set {_attempt} to 0
+            while file {novalibs.cache.users.upload.file/%player%} does not exist:
+                download file from {novalibs.cache.users.upload.link/%player%} to file {novalibs.cache.users.upload.file/%player%}
+                wait 1 second
+                add 1 to {_attempt}
+                if {_attempt} = 3:
+                    send "&cUnable to download the file." to player
+                    stop
+            if file {novalibs.cache.users.upload.file/%player%} exists:
+                send "&aDownload complete. 1/1" to player
+                send "&a%{novalibs.cache.users.upload.file/%player%}%" to player
+        
+        else:
+
+            stop
