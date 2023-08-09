@@ -66,6 +66,10 @@
 options:
     mojobs.version: "v1.0.0a"
 
+on load:
+    
+    set {mojobs.api.version?} to "%{@mojobs.version}%"
+
 on join:
 
     if {mo_jobs.database.users?::%player%.jobs?=miner.level} is not set:
