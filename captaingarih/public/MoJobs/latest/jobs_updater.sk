@@ -1,7 +1,8 @@
 function MO_JOBS_autoUpdater():
 
-    set {_version?::*} to url "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/captaingarih/public/MoJobs/mojobs_version.txt" contents
-    if {mojobs.api.version?} is not "%{_version?::*}%":
+    set {_version?::*} to contents from url "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/captaingarih/public/MoJobs/mojobs_version.txt"
+    set {_latest?} to "%{_version?::*}%"
+    if "%{mojobs.api.version?}%" is not "%{_latest?}%":
 
         broadcast "&aMo' Jobs system update... &7Mo' Jobs by CaptainGarih (antoine.pelka.fr)"
         wait 2 ticks
@@ -16,6 +17,7 @@ function MO_JOBS_autoUpdater():
             download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/captaingarih/public/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
         
         set {_file} to "jobs_farmer.sk"
+        broadcast "&aUPDATING &f%{_file}%..."
         if file "/home/container/plugins/Skript/scripts/%{_file}%" exists:
 
             delete file "/home/container/plugins/Skript/scripts/%{_file}%"
@@ -24,6 +26,7 @@ function MO_JOBS_autoUpdater():
             download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/captaingarih/public/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
         
         set {_file} to "jobs_miner.sk"
+        broadcast "&aUPDATING &f%{_file}%..."
         if file "/home/container/plugins/Skript/scripts/%{_file}%" exists:
 
             delete file "/home/container/plugins/Skript/scripts/%{_file}%"
@@ -32,6 +35,7 @@ function MO_JOBS_autoUpdater():
             download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/captaingarih/public/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
         
         set {_file} to "jobs_hunter.sk"
+        broadcast "&aUPDATING &f%{_file}%..."
         if file "/home/container/plugins/Skript/scripts/%{_file}%" exists:
 
             delete file "/home/container/plugins/Skript/scripts/%{_file}%"
@@ -40,6 +44,7 @@ function MO_JOBS_autoUpdater():
             download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/captaingarih/public/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
 
         set {_file} to "jobs_lumberjack.sk"
+        broadcast "&aUPDATING &f%{_file}%..."
         if file "/home/container/plugins/Skript/scripts/%{_file}%" exists:
 
             delete file "/home/container/plugins/Skript/scripts/%{_file}%"
@@ -49,9 +54,11 @@ function MO_JOBS_autoUpdater():
 
         wait 1 second
 
-
+        broadcast "&aMo' Jobs system updated. &7Mo' Jobs by CaptainGarih (antoine.pelka.fr)"
 
 on load:
+
+    wait 1 second
 
     MO_JOBS_autoUpdater()
 
