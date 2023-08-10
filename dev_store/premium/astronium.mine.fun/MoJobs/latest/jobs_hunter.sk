@@ -1,0 +1,106 @@
+#       Mo' Jobs !
+#
+#       By CaptainGarih (discord: garih)
+
+#=====================================================================================================
+#=====================================================================================================
+#=====================================================================================================
+
+
+#       Do not modify any part of this file! This file is subject to the intellectual property code!
+
+
+#=====================================================================================================
+#=====================================================================================================
+#=====================================================================================================
+
+on join:
+
+    if {mo_jobs.database.users?::%player%.jobs?=hunter.xp} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=hunter.xp} to 0
+    if {mo_jobs.database.users?::%player%.jobs?=hunter.xpmax} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=hunter.xpmax} to 1000
+
+function MO_JOBS_hunter_GiveXP(p: player, xp: number):
+
+    if {mo_jobs.database.users?::%{_p}%.jobs?=hunter.level} = 100:
+
+        stop
+    
+    set {_lvl} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.level}
+    set {_lvl} to {_lvl} / 2
+    set {_xp} to {_xp} * {_lvl}
+
+    add {_xp} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xp}
+
+    send action bar "&e&lMineur &a+%{_xp}%&axp" to {_p}
+
+    if {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xp} > {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xpmax}:
+
+        set {mo_jobs.database.users?::%{_p}%.jobs?=hunter.level} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.level} + 1
+
+        set {_xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xpmax}
+        set {_xpmax} to {_xpmax} / 100
+        set {_xpmax} to {_xpmax} * 10
+        set {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xpmax} + {_xpmax}
+        set {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xp} to 0
+        send title "&e&lNiveau supérieur" with subtitle "&aMineur &f%{mo_jobs.database.users?::%{_p}%.jobs?=hunter.level}%" to {_p} for 5 seconds
+
+        set {_reward} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.level}
+        set {_reward} to {_reward} * 15
+        #add {_reward} to {_p}'s account
+        send "&eGain de niveau de métier: &a+%{_reward}%$" to {_p}
+
+        stop
+    
+    if {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xp} = {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xpmax}:
+
+        set {mo_jobs.database.users?::%{_p}%.jobs?=hunter.level} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.level} + 1
+
+        set {_xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xpmax}
+        set {_xpmax} to {_xpmax} / 100
+        set {_xpmax} to {_xpmax} * 10
+
+        set {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xpmax} + {_xpmax}
+        set {mo_jobs.database.users?::%{_p}%.jobs?=hunter.xp} to 0
+        send title "&e&lNiveau supérieur" with subtitle "&aMineur &f%{mo_jobs.database.users?::%{_p}%.jobs?=hunter.level}%" to {_p} for 5 seconds
+
+        set {_reward} to {mo_jobs.database.users?::%{_p}%.jobs?=hunter.level}
+        set {_reward} to {_reward} * 15
+        #add {_reward} to {_p}'s account
+        send "&eGain de niveau de métier: &a+%{_reward}%$" to {_p}
+
+        stop
+
+on death:
+
+    victim is not a player
+    attacker is a player
+
+    if victim is a cow:
+
+        MO_JOBS_hunter_GiveXP(attacker, 1)
+    
+    if victim is a chicken:
+
+        MO_JOBS_hunter_GiveXP(attacker, 0.5)
+    
+    if victim is a creeper:
+
+        MO_JOBS_hunter_GiveXP(attacker, 2)
+    
+    if victim is a skeleton:
+
+        MO_JOBS_hunter_GiveXP(attacker, 2)
+    
+    if victim is a pig:
+
+        MO_JOBS_hunter_GiveXP(attacker, 0.3)
+    
+    if victim is a enderman:
+
+        MO_JOBS_hunter_GiveXP(attacker, 3)
+    
+    if victim is a iron golem:
+
+        MO_JOBS_hunter_GiveXP(attacker, 5)

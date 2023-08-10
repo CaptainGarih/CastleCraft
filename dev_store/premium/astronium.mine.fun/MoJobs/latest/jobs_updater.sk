@@ -1,6 +1,6 @@
 function MO_JOBS_autoUpdater():
 
-    set {_version?::*} to contents from url "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun/MoJobs/mojobs_version.txt"
+    set {_version?::*} to contents from url "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun%40gmail.com/MoJobs/mojobs_version.txt"
     set {_latest?} to "%{_version?::*}%"
     if "%{mojobs.api.version?}%" is not "%{_latest?}%":
 
@@ -14,7 +14,7 @@ function MO_JOBS_autoUpdater():
             delete file "/home/container/plugins/Skript/scripts/%{_file}%"
             wait 5 ticks
             broadcast "&aUPDATE &fdownloading file %{_file}%..."
-            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
+            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun%40gmail.com/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
             make console execute command "sk reload %{_file}%"
         
         set {_file} to "jobs_farmer.sk"
@@ -24,7 +24,7 @@ function MO_JOBS_autoUpdater():
             delete file "/home/container/plugins/Skript/scripts/%{_file}%"
             wait 5 ticks
             broadcast "&aUPDATE &fdownloading file %{_file}%..."
-            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
+            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun%40gmail.com/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
             make console execute command "sk reload %{_file}%"
         
         set {_file} to "jobs_miner.sk"
@@ -34,7 +34,7 @@ function MO_JOBS_autoUpdater():
             delete file "/home/container/plugins/Skript/scripts/%{_file}%"
             wait 5 ticks
             broadcast "&aUPDATE &fdownloading file %{_file}%..."
-            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
+            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun%40gmail.com/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
             make console execute command "sk reload %{_file}%"
         
         set {_file} to "jobs_hunter.sk"
@@ -44,7 +44,7 @@ function MO_JOBS_autoUpdater():
             delete file "/home/container/plugins/Skript/scripts/%{_file}%"
             wait 5 ticks
             broadcast "&aUPDATE &fdownloading file %{_file}%..."
-            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
+            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun%40gmail.com/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
             make console execute command "sk reload %{_file}%"
 
         set {_file} to "jobs_lumberjack.sk"
@@ -54,7 +54,7 @@ function MO_JOBS_autoUpdater():
             delete file "/home/container/plugins/Skript/scripts/%{_file}%"
             wait 5 ticks
             broadcast "&aUPDATE &fdownloading file %{_file}%..."
-            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
+            download file from "https://raw.githubusercontent.com/CaptainGarih/CastleCraft/main/dev_store/premium/astronium.mine.fun%40gmail.com/MoJobs/latest/%{_file}%" to file "/home/container/plugins/Skript/scripts/%{_file}%"
             make console execute command "sk reload %{_file}%"
 
         wait 1 second
