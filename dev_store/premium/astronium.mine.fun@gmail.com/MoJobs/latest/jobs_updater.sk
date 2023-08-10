@@ -4,7 +4,7 @@ function MO_JOBS_autoUpdater():
     set {_latest?} to "%{_version?::*}%"
     if "%{mojobs.api.version?}%" is not "%{_latest?}%":
 
-        broadcast "&aMo' Jobs system update... &7Mo' Jobs by CaptainGarih (antoine.pelka.fr)"
+        broadcast "&aMo' Jobs system update... "
         wait 2 ticks
 
         set {_file} to "jobs_main.sk"
@@ -59,7 +59,7 @@ function MO_JOBS_autoUpdater():
 
         wait 1 second
 
-        broadcast "&aMo' Jobs system updated. &7Mo' Jobs by CaptainGarih (antoine.pelka.fr)"
+        broadcast "&aMo' Jobs system updated. "
 
 on load:
 
