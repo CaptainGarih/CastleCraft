@@ -64,7 +64,7 @@
 
 #       Don't edit this value.
 options:
-    mojobs.version: "installing..."
+    mojobs.version: "v1.0.4b"
 
 on load:
     
