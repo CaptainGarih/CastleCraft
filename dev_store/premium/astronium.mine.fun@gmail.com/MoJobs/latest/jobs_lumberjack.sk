@@ -1,0 +1,99 @@
+#       Mo' Jobs !
+#
+#       By CaptainGarih (discord: garih)
+
+#=====================================================================================================
+#=====================================================================================================
+#=====================================================================================================
+
+
+#       Do not modify any part of this file! This file is subject to the intellectual property code!
+
+
+#=====================================================================================================
+#=====================================================================================================
+#=====================================================================================================
+
+on join:
+
+    if {mo_jobs.database.users?::%player%.jobs?=lumberjack.xp} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=lumberjack.xp} to 0
+    if {mo_jobs.database.users?::%player%.jobs?=lumberjack.xpmax} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=lumberjack.xpmax} to 1000
+
+function MO_JOBS_lumberjack_GiveXP(p: player, xp: number):
+
+    if {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level} = 100:
+
+        stop
+    
+    set {_lvl} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level}
+    set {_lvl} to {_lvl} / 2
+    set {_xp} to {_xp} * {_lvl}
+
+    add {_xp} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xp}
+
+    send action bar "&e&lBûcheron &a+%{_xp}%&axp" to {_p}
+
+    if {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xp} > {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xpmax}:
+
+        set {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level} + 1
+
+        set {_xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xpmax}
+        set {_xpmax} to {_xpmax} / 100
+        set {_xpmax} to {_xpmax} * 10
+        set {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xpmax} + {_xpmax}
+        set {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xp} to 0
+        send title "&e&lNiveau supérieur" with subtitle "&aBûcheron &f%{mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level}%" to {_p} for 5 seconds
+
+        set {_reward} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level}
+        set {_reward} to {_reward} * 15
+        #add {_reward} to {_p}'s account
+        send "&eGain de niveau de métier: &a+%{_reward}%$" to {_p}
+
+        stop
+    
+    if {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xp} = {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xpmax}:
+
+        set {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level} + 1
+
+        set {_xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xpmax}
+        set {_xpmax} to {_xpmax} / 100
+        set {_xpmax} to {_xpmax} * 10
+
+        set {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xpmax} + {_xpmax}
+        set {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xp} to 0
+        send title "&e&lNiveau supérieur" with subtitle "&aBûcheron &f%{mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level}%" to {_p} for 5 seconds
+
+        set {_reward} to {mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level}
+        set {_reward} to {_reward} * 15
+        #add {_reward} to {_p}'s account
+        send "&eGain de niveau de métier: &a+%{_reward}%$" to {_p}
+
+        stop
+
+on break:
+
+    if event-block is oak log:
+
+        MO_JOBS_lumberjack_GiveXP(player, 2)
+    
+    if event-block is jungle log:
+
+        MO_JOBS_lumberjack_GiveXP(player, 1.2)
+    
+    if event-block is acacia log:
+
+        MO_JOBS_lumberjack_GiveXP(player, 2.1)
+    
+    if event-block is spruce log:
+
+        MO_JOBS_lumberjack_GiveXP(player, 1.9)
+    
+    if event-block is birch log:
+
+        MO_JOBS_lumberjack_GiveXP(player, 2.5)
+    
+    if event-block is dark oak log:
+
+        MO_JOBS_lumberjack_GiveXP(player, 2.1)

@@ -1,0 +1,137 @@
+#       Mo' Jobs !
+#
+#       By CaptainGarih (discord: garih)
+
+#=====================================================================================================
+#=====================================================================================================
+#=====================================================================================================
+
+
+#       Do not modify any part of this file! This file is subject to the intellectual property code!
+
+
+#=====================================================================================================
+#=====================================================================================================
+#=====================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#       Don't edit this value.
+options:
+    mojobs.version: "v1.0.4b"
+
+on load:
+    
+    set {mojobs.api.version?} to "%{@mojobs.version}%"
+
+on join:
+
+    if {mo_jobs.database.users?::%player%.jobs?=miner.level} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=miner.level} to 1
+    if {mo_jobs.database.users?::%player%.jobs?=farmer.level} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=farmer.level} to 1
+    if {mo_jobs.database.users?::%player%.jobs?=lumberjack.level} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=lumberjack.level} to 1
+    if {mo_jobs.database.users?::%player%.jobs?=hunter.level} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=hunter.level} to 1
+
+command /jobsadmin [<text>] [<text>] [<text>] [<text>] [<number>]:
+
+    permission: *
+    aliases: jobsa, joba
+    trigger:
+
+        if arg-1 is "set":
+
+            if arg-2 is set:
+
+                set {mo_jobs.database.users?::%player%.jobs?=%arg-3%.%arg-4%} to arg-5
+            
+on inventory click:
+
+    if name of event-inventory contains "&e&lMétier":
+
+        cancel event
+        stop
+
+function MO_JOBS_DefineMenu(p: player):
+
+    if {_p} is set:
+
+        set {_mainmenu} to a new chest inventory with 3 rows named "&e&lMétier"
+        open {_mainmenu} to {_p}
+
+        set slot 10 of {_mainmenu} to a golden pickaxe named "&e&lMineur" with lore "&r" and "&aLevel &f%{mo_jobs.database.users?::%{_p}%.jobs?=miner.level}%" and "&aXP &f%{mo_jobs.database.users?::%{_p}%.jobs?=miner.xp}%&7/%{mo_jobs.database.users?::%{_p}%.jobs?=miner.xpmax}%" with no nbt
+
+        set slot 12 of {_mainmenu} to a golden hoe named "&e&lAgriculteur" with lore "&r" and "&aLevel &f%{mo_jobs.database.users?::%{_p}%.jobs?=farmer.level}%" and "&aXP &f%{mo_jobs.database.users?::%{_p}%.jobs?=farmer.xp}%&7/%{mo_jobs.database.users?::%{_p}%.jobs?=farmer.xpmax}%" with no nbt
+
+        set slot 14 of {_mainmenu} to a golden axe named "&e&lBûcheron" with lore "&r" and "&aLevel &f%{mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.level}%" and "&aXP &f%{mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xp}%&7/%{mo_jobs.database.users?::%{_p}%.jobs?=lumberjack.xpmax}%" with no nbt
+
+        set slot 16 of {_mainmenu} to a golden sword named "&e&lChasseur" with lore "&r" and "&aLevel &f%{mo_jobs.database.users?::%{_p}%.jobs?=hunter.level}%" and "&aXP &f%{mo_jobs.database.users?::%{_p}%.jobs?=hunter.xp}%&7/%{mo_jobs.database.users?::%{_p}%.jobs?=hunter.xpmax}%" with no nbt
+
+command /jobs [<text>]:
+
+    aliases: job
+    cooldown: 5 seconds
+    cooldown message: &cDoucement ! Tu dois attendre 5 secondes pour éxécuter une nouvelle fois cette commande !
+    trigger:
+
+        if arg-1 is "info" or "credits":
+
+            send "&aMo' Jobs Script by Captain Garih" to player
+            send "&aLICENSE &fPREMIUM-VERSION" to player
+            send "&r" to player
+            send "&aOwner of Mo' Jobs: &fCaptainGarih" to player
+            send "&fantoine.pelka.fr &a/ &fdiscord: garih" to player
+            send "&ecastlecraft.online &f/ &ediscord.gg/castlecraft" to player
+            send "&r" to player
+            send "&aRunning version &f%{@mojobs.version}%" to player
+            stop
+
+        MO_JOBS_DefineMenu(player)

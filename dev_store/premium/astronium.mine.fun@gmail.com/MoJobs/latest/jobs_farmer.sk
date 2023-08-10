@@ -1,0 +1,103 @@
+#       Mo' Jobs !
+#
+#       By CaptainGarih (discord: garih)
+
+#=====================================================================================================
+#=====================================================================================================
+#=====================================================================================================
+
+
+#       Do not modify any part of this file! This file is subject to the intellectual property code!
+
+
+#=====================================================================================================
+#=====================================================================================================
+#=====================================================================================================
+
+on join:
+
+    if {mo_jobs.database.users?::%player%.jobs?=farmer.xp} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=farmer.xp} to 0
+    if {mo_jobs.database.users?::%player%.jobs?=farmer.xpmax} is not set:
+        set {mo_jobs.database.users?::%player%.jobs?=farmer.xpmax} to 1000
+
+function MO_JOBS_farmer_GiveXP(p: player, xp: number):
+
+    if {mo_jobs.database.users?::%{_p}%.jobs?=farmer.level} = 100:
+
+        stop
+    
+    set {_lvl} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.level}
+    set {_lvl} to {_lvl} / 2
+    set {_xp} to {_xp} * {_lvl}
+
+    add {_xp} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xp}
+
+    send action bar "&e&lAgriculteur &a+%{_xp}%&axp" to {_p}
+
+    if {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xp} > {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xpmax}:
+
+        set {mo_jobs.database.users?::%{_p}%.jobs?=farmer.level} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.level} + 1
+
+        set {_xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xpmax}
+        set {_xpmax} to {_xpmax} / 100
+        set {_xpmax} to {_xpmax} * 10
+        set {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xpmax} + {_xpmax}
+        set {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xp} to 0
+        send title "&e&lNiveau supérieur" with subtitle "&aAgriculteur &f%{mo_jobs.database.users?::%{_p}%.jobs?=farmer.level}%" to {_p} for 5 seconds
+
+        set {_reward} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.level}
+        set {_reward} to {_reward} * 15
+        #add {_reward} to {_p}'s account
+        send "&eGain de niveau de métier: &a+%{_reward}%$" to {_p}
+
+        stop
+    
+    if {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xp} = {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xpmax}:
+
+        set {mo_jobs.database.users?::%{_p}%.jobs?=farmer.level} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.level} + 1
+
+        set {_xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xpmax}
+        set {_xpmax} to {_xpmax} / 100
+        set {_xpmax} to {_xpmax} * 10
+
+        set {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xpmax} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xpmax} + {_xpmax}
+        set {mo_jobs.database.users?::%{_p}%.jobs?=farmer.xp} to 0
+        send title "&e&lNiveau supérieur" with subtitle "&aAgriculteur &f%{mo_jobs.database.users?::%{_p}%.jobs?=farmer.level}%" to {_p} for 5 seconds
+
+        set {_reward} to {mo_jobs.database.users?::%{_p}%.jobs?=farmer.level}
+        set {_reward} to {_reward} * 15
+        #add {_reward} to {_p}'s account
+        send "&eGain de niveau de métier: &a+%{_reward}%$" to {_p}
+
+        stop
+
+on break:
+
+    if event-block is pumpkin:
+
+        MO_JOBS_farmer_GiveXP(player, 2)
+    
+    if event-block is carved pumpkin:
+
+        MO_JOBS_farmer_GiveXP(player, 5)
+    
+    if event-block is wheat:
+
+        MO_JOBS_farmer_GiveXP(player, 2)
+    
+    if event-block is carrot:
+
+        MO_JOBS_farmer_GiveXP(player, 2)
+    
+    if event-block is melon:
+
+        MO_JOBS_farmer_GiveXP(player, 2.5)
+    
+on craft of cake:
+
+    MO_JOBS_farmer_GiveXP(player, 5)
+
+on throw egg:
+
+    MO_JOBS_farmer_GiveXP(player, 2.2)
