@@ -1,0 +1,54 @@
+on join:
+
+    clear scoreboard of player
+    toggle scoreboard of player on
+
+    set {_user_player} to player
+
+    set {_rank} to placeholder "luckperms_prefix"
+    set {server.cache.player_data/%player%.rank_prefix} to {_rank}
+    
+    replace all "&" with "§" in {_rank}
+    
+    set {_money} to KASAPROFILE_GetPlayerMoney({_user_player})
+    if "%{_money}%" contains "<none>":
+
+        set {_money} to 0
+
+    while player is online:
+
+        set {_pcount} to 0
+        loop all bungee players:
+
+            add 1 to {_pcount}
+
+        set title of player's scoreboard to "&e%{global_data.config/server.name}%"
+
+        set line 10 of player's scoreboard to "&r"
+
+        set line 9 of player's scoreboard to "&r%{_rank}% &e%player%"
+        set line 8 of player's scoreboard to "&r"
+
+        set line 7 of player's scoreboard to "&fMoney &a%{_money}%&a$"
+
+        set line 3 of player's scoreboard to "&fOnline player(s) &a%{_pcount}%"
+
+        set line 2 of player's scoreboard to "&r"
+
+        set line 1 of player's scoreboard to "&e%{global_data.config/server.ip}%"
+
+        wait 5 second
+
+every 1 seconds in world "world":
+
+    loop all players:
+
+        set tab header to "&e&lWelcome to &f&l%{global_data.config/server.name}% &e&l!" and footer to "&e%{global_data.config/server.ip}%" for loop-player
+
+        set {_user_player} to loop-player
+    
+        set {_rank} to {server.cache.player_data/%loop-player%.rank_prefix}
+        
+        replace all "&" with "§" in {_rank}
+
+        set the loop-player's tab list name to "%{_rank}% &e%loop-player's name%"
