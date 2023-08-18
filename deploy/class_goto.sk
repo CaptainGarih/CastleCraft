@@ -17,24 +17,29 @@ command /lobby:
 
         if "%player's world%" contains "world":
 
+            wait 1 tick
+        
+        else:
             send "&cYou cannot return to the lobby during a game!" to player
             stop
+
+        set {_server} to "lobby"
+        make player execute command "bungeeplayer join %{_server}%"
+
+command /gotofreebuild:
+
+    cooldown: 5 seconds
+    cooldown message: &ePlease wait 5 seconds between each execution of this command.
+    trigger:
+        if "%player's world%" contains "world":
+
+            wait 1 tick
         
         else:
             stop
 
-        set {_server} to "lobby"
-        if player has permission "castlecraft.transfer.priority.fast":
-            ARTEMISLINK_TransferPlayer(player, "--fast", {_server})
-            stop
-        else:
-            set {_premium?} to KASAPROFILE_GetPlayerPremium(player)
-            if {_premium?} is true:
-                ARTEMISLINK_TransferPlayer(player, "NONE", {_server})
-                stop
-            else:
-                ARTEMISLINK_TransferPlayer(player, "--nofast", {_server})
-                stop
+        set {_server} to "freebuild"
+        make player execute command "bungeeplayer join %{_server}%"
 
 command /gotobedwars:
 
@@ -49,17 +54,7 @@ command /gotobedwars:
             stop
 
         set {_server} to "bedwars"
-        if player has permission "castlecraft.transfer.priority.fast":
-            ARTEMISLINK_TransferPlayer(player, "--fast", {_server})
-            stop
-        else:
-            set {_premium?} to KASAPROFILE_GetPlayerPremium(player)
-            if {_premium?} is true:
-                ARTEMISLINK_TransferPlayer(player, "NONE", {_server})
-                stop
-            else:
-                ARTEMISLINK_TransferPlayer(player, "--nofast", {_server})
-                stop
+        make player execute command "bungeeplayer join %{_server}%"
 
 command /gotothetower:
 
@@ -74,17 +69,7 @@ command /gotothetower:
             stop
     
         set {_server} to "thetower"
-        if player has permission "castlecraft.transfer.priority.fast":
-            ARTEMISLINK_TransferPlayer(player, "--fast", {_server})
-            stop
-        else:
-            set {_premium?} to KASAPROFILE_GetPlayerPremium(player)
-            if {_premium?} is true:
-                ARTEMISLINK_TransferPlayer(player, "NONE", {_server})
-                stop
-            else:
-                ARTEMISLINK_TransferPlayer(player, "--nofast", {_server})
-                stop
+        make player execute command "bungeeplayer join %{_server}%"
 
 command /gotofindthetraitor:
 
@@ -99,17 +84,7 @@ command /gotofindthetraitor:
             stop
 
         set {_server} to "findthetraitor"
-        if player has permission "castlecraft.transfer.priority.fast":
-            ARTEMISLINK_TransferPlayer(player, "--fast", {_server})
-            stop
-        else:
-            set {_premium?} to KASAPROFILE_GetPlayerPremium(player)
-            if {_premium?} is true:
-                ARTEMISLINK_TransferPlayer(player, "NONE", {_server})
-                stop
-            else:
-                ARTEMISLINK_TransferPlayer(player, "--nofast", {_server})
-                stop
+        make player execute command "bungeeplayer join %{_server}%"
 
 command /gotobrainrush:
 
@@ -124,17 +99,7 @@ command /gotobrainrush:
             stop
 
         set {_server} to "brainrush"
-        if player has permission "castlecraft.transfer.priority.fast":
-            ARTEMISLINK_TransferPlayer(player, "--fast", {_server})
-            stop
-        else:
-            set {_premium?} to KASAPROFILE_GetPlayerPremium(player)
-            if {_premium?} is true:
-                ARTEMISLINK_TransferPlayer(player, "NONE", {_server})
-                stop
-            else:
-                ARTEMISLINK_TransferPlayer(player, "--nofast", {_server})
-                stop
+        make player execute command "bungeeplayer join %{_server}%"
 
 command /gotosumo:
 
@@ -149,17 +114,7 @@ command /gotosumo:
             stop
     
         set {_server} to "sumo"
-        if player has permission "castlecraft.transfer.priority.fast":
-            ARTEMISLINK_TransferPlayer(player, "--fast", {_server})
-            stop
-        else:
-            set {_premium?} to KASAPROFILE_GetPlayerPremium(player)
-            if {_premium?} is true:
-                ARTEMISLINK_TransferPlayer(player, "NONE", {_server})
-                stop
-            else:
-                ARTEMISLINK_TransferPlayer(player, "--nofast", {_server})
-                stop
+        make player execute command "bungeeplayer join %{_server}%"
 
 command /gotoarcade:
 
@@ -174,17 +129,7 @@ command /gotoarcade:
             stop
 
         set {_server} to "arcade"
-        if player has permission "castlecraft.transfer.priority.fast":
-            ARTEMISLINK_TransferPlayer(player, "--fast", {_server})
-            stop
-        else:
-            set {_premium?} to KASAPROFILE_GetPlayerPremium(player)
-            if {_premium?} is true:
-                ARTEMISLINK_TransferPlayer(player, "NONE", {_server})
-                stop
-            else:
-                ARTEMISLINK_TransferPlayer(player, "--nofast", {_server})
-                stop
+        make player execute command "bungeeplayer join %{_server}%"
 
 on inventory click:
 
@@ -225,6 +170,12 @@ on inventory click:
             close player's inventory
             wait 2 ticks
             make player execute command "/gotosumo"
+
+        if name of event-item contains "&e&lFree Build":
+
+            close player's inventory
+            wait 2 ticks
+            make player execute command "/gotofreebuild"
 
     else:
 
