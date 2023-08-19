@@ -82,7 +82,7 @@ function OpenPlayerProfile(p: player, user: text):
 	set slot 13 of {_profile_ui.%{_p}%} to {_user_player}'s skull named "&d%{_user}%"
 
 	set slot 29 of {_profile_ui.%{_p}%} to a gold ingot named "&eMoney &f%%{_user_player}%'s money%$"
-	set {_rank} to placeholder "luckperms_prefix"
+	set {_rank} to {server.cache.player_data/%{_user_player}%.rank_prefix}
 	replace all "&" with "§" in {_rank}
 	set slot 30 of {_profile_ui.%{_p}%} to a diamond named "&bRank &f%{_rank}%"
 
