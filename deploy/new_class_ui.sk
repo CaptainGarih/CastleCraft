@@ -9,11 +9,6 @@ on join:
     set {server.cache.player_data/%player%.rank_prefix} to {_rank}
     
     replace all "&" with "§" in {_rank}
-    
-    set {_money} to KASAPROFILE_GetPlayerMoney({_user_player})
-    if "%{_money}%" contains "<none>":
-
-        set {_money} to 0
 
     while player is online:
 
@@ -29,7 +24,7 @@ on join:
         set line 9 of player's scoreboard to "&r%{_rank}% &e%player%"
         set line 8 of player's scoreboard to "&r"
 
-        set line 7 of player's scoreboard to "&fMoney &a%{_money}%&a$"
+        set line 7 of player's scoreboard to "&fMoney &a%player's money%&a$"
 
         set line 3 of player's scoreboard to "&fOnline player(s) &a%{_pcount}%"
 
