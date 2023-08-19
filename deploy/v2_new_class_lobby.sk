@@ -34,6 +34,10 @@ on join:
 
     loop all players in world "world":
         send "%{_rank}% %player% &a&ohas joined your session." to loop-player
+    
+    wait 15 ticks
+
+    teleport player to {lobby.config.spawn_location}
 
 on leave:
 
