@@ -83,6 +83,7 @@ function OpenPlayerProfile(p: player, user: text):
 
 	set {_server} to {_p}'s server
 	set slot 29 of {_profile_ui.%{_p}%} to a emerald named "&eIn server &f%{_server}%"
+	wait 5 ticks
 	set {_rank} to {server.cache.player_data/%{_user_player}%.rank_prefix}
 	replace all "&" with "§" in {_rank}
 	set slot 30 of {_profile_ui.%{_p}%} to a diamond named "&bRank &f%{_rank}%"
