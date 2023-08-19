@@ -81,8 +81,7 @@ function OpenPlayerProfile(p: player, user: text):
 	set {_user_player} to {_user} parsed as a player
 	set slot 13 of {_profile_ui.%{_p}%} to {_user_player}'s skull named "&d%{_user}%"
 
-	set slot 29 of {_profile_ui.%{_p}%} to a gold ingot named "&eMoney &f%player's money$"
-	set {_rank} to KASAPROFILE_GetPlayerRank({_user_player})
+	set slot 29 of {_profile_ui.%{_p}%} to a gold ingot named "&eMoney &f%{_user_player}'s money%$"
 	set {_rank} to placeholder "luckperms_prefix"
 	replace all "&" with "§" in {_rank}
 	set slot 30 of {_profile_ui.%{_p}%} to a diamond named "&bRank &f%{_rank}%"
