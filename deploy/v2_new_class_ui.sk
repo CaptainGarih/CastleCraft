@@ -1,6 +1,11 @@
 on join:
 
     clear scoreboard of player
+    
+    toggle scoreboard of player off
+
+    wait 5 seconds
+    
     toggle scoreboard of player on
 
     set {_user_player} to player
