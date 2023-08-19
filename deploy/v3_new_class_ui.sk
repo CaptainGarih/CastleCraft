@@ -29,7 +29,8 @@ on join:
         set line 9 of player's scoreboard to "&r%{_rank}% &e%player%"
         set line 8 of player's scoreboard to "&r"
 
-        set line 7 of player's scoreboard to "&fMoney &a%player's money%&a$"
+        set {_money} to placeholder "vault_eco_balance"
+        set line 7 of player's scoreboard to "&fMoney &a%{_money}%&a$"
 
         set line 3 of player's scoreboard to "&fOnline player(s) &a%{_pcount}%"
 
