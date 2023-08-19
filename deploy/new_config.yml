@@ -18,7 +18,7 @@ Tax:
   Interval: 0
   Mode: none
 Database:
-  URL: 'localhost:3306/'
+  URL: '10.0.0.36:3306/'
   Name: 's33_money'
   Username: 'u33_OZ6NTOnCLL'
   Password: 'XAD4f51@!6qfz^w2iCihh!2X'
