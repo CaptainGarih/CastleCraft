@@ -1,0 +1,23 @@
+on command:
+
+    set {_cmd} to "./>%command%</."
+    
+    if {_cmd} contains "./>money":
+
+        cancel event
+        
+        send "&eMoney &f%player's money%$"
+        
+        stop
+    
+    if player is op:
+
+        stop
+
+    set {_cmd} to "./>%command%</."
+
+    if {_cmd} contains "./>mc":
+
+        cancel event
+    
+        send "&rUnknow command." to player
