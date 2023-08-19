@@ -1,0 +1,153 @@
+options:
+
+	kosmos.config.version: "1.0.0a"
+	kosmos.config.prefix: "&eKosmos&dLib &5|"
+
+	kosmos.config.players.autotp: false
+	kosmos.config.sessions.mx: 20
+	kosmos.config.session.mn: 0
+	kosmos.config.session.prefix: "LoMINI"
+	kosmos.config.session.template: "world"
+	kosmos.config.session.lobby_location: {lobby.config.spawn_location}
+
+#	   API Define
+on load:
+	set {kosmos_lib.api.data/config.session.prefix} to {@kosmos.config.session.prefix}
+
+#		Load and Unload messages
+on load:
+
+	send "%{@kosmos.config.prefix}% &aKosmosLib system enabled successfully." to console
+	send "%{@kosmos.config.prefix}% &aVersion &f%{@kosmos.config.version}%" to console
+
+on unload:
+
+	send "%{@kosmos.config.prefix}% &cKosmosLib system successfully disabled." to console
+	send "%{@kosmos.config.prefix}% &aVersion &f%{@kosmos.config.version}%" to console
+
+#	   API Functions
+
+function KOSMOS_PlayerSendMessage(p: player, message: text):
+
+	set {_kosmos.player_world} to {_p}'s world
+	loop all players:
+		
+		set {_kosmos.player2_world} to "%loop-player's world%"
+
+		if "%{_kosmos.player_world}%" contains "%{_kosmos.player2_world}%":
+
+			send {_message} to loop-player
+
+function KOSMOS_PlayerMoveTo(p: player, session: text):
+
+	loop all worlds:
+
+		if "%loop-value%" contains {@kosmos.config.session.prefix}:
+
+			if "%{_session}%" contains "%loop-value%":
+
+				set {_kosmos.player_world} to {_p}'s world
+				if "%{_kosmos.player_world}%" contains "%{_session}%":
+
+					send "&cYou are already connected to this session!" to {_p}
+					stop
+				
+				else:
+
+					set {_loc} to {@kosmos.config.session.lobby_location}
+					set world of {_loc} to loop-value
+					send "&aTransfer from &f%{_kosmos.player_world}% &ato &f%{_session}%&a..." to {_p}
+					wait 5 ticks
+					teleport {_p} to {_loc}
+					wait 1 tick
+					send "&aTransferred to session successfully." to {_p}
+					play sound "entity.enderman.teleport" with volume 1 at {_p} for {_p}
+					stop
+
+#	   Connection to Session
+on join:
+
+	wait 10 ticks
+
+	if {@kosmos.config.players.autotp} is true:
+		set {_kosmos.player_moved?} to false
+		while {_kosmos.player_moved?} is false:
+			loop all worlds:
+
+				if "%loop-value%" contains {@kosmos.config.session.prefix}:
+
+					chance of 50%:
+
+						set {_loc} to {@kosmos.config.session.lobby_location}
+						set world of {_loc} to loop-value
+						teleport player to {_loc}
+						set {_kosmos.player_moved?} to true
+	else:
+
+		teleport player to {@kosmos.config.session.lobby_location}
+
+#	   Generate Session
+on load:
+
+	wait 2 seconds
+
+	send "%{@kosmos.config.prefix}% &fSession checks..." to console
+
+	set {_kosmos.session_found?} to 0
+
+	loop all worlds:
+
+		if "%loop-value%" contains {@kosmos.config.session.prefix}:
+
+			add 1 to {_kosmos.session_found?}
+
+			send "%{@kosmos.config.prefix}% &fSession found: &e%loop-value%" to console
+
+	if {_kosmos.session_found?} < {@kosmos.config.session.mn}:
+
+		send "%{@kosmos.config.prefix}% &cNot enough sessions found." to console
+		wait 5 ticks
+		send "%{@kosmos.config.prefix}% &fGenerating sessions..." to console
+
+		wait 10 ticks
+
+		set {_kosmos.session_to_gen?} to {@kosmos.config.session.mn} - {_kosmos.session_found?}
+
+		loop {_kosmos.session_to_gen?} times:
+			set {_kosmos.temp.new_session_name?} to a random number between 111 and 999
+			make console execute command "mv clone world %{@kosmos.config.session.prefix}%%{_kosmos.temp.new_session_name?}%"
+			send "%{@kosmos.config.prefix}% &fGenerating Session %{@kosmos.config.session.prefix}%%{_kosmos.temp.new_session_name?}%..." to console
+			wait 5 ticks
+		
+		send "%{@kosmos.config.prefix}% &aSessions generated successfully." to console
+	
+	if {_kosmos.session_found?} > {@kosmos.config.session.mn}:
+
+		send "%{@kosmos.config.prefix}%&cToo many sessions found." to console
+		wait 5 ticks
+		send "%{@kosmos.config.prefix}% &fDeleting invalid sessions..." to console
+
+		wait 10 ticks
+
+		set {_kosmos.session_to_delete?} to {_kosmos.session_found?} - {@kosmos.config.session.mn}
+
+		set {_kosmos.session_deleted?} to 0
+		loop all worlds:
+
+			if "%loop-value%" contains {@kosmos.config.session.prefix}:
+
+				if {_kosmos.session_deleted?} != {_kosmos.session_to_delete?}:
+
+					send "%{@kosmos.config.prefix}% &fUnloading session %loop-value%..." to console
+					make console execute command "mv unload %loop-value%"
+
+					wait 1 second
+
+					send "%{@kosmos.config.prefix}% &fDeleting session %loop-value%..." to console
+					make console execute command "mv delete %loop-value%"
+
+					wait 5 ticks
+
+					make console execute command "mv confirm"
+
+					add 1 to {_kosmos.session_deleted?}
