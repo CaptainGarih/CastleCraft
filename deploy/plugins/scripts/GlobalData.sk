@@ -1,0 +1,11 @@
+options:
+
+    server.name: "&6&l+&e&lCastleCraft&6&l+"
+    server.ip: "castlecraft.online"
+    server.color: "&e"
+
+on load:
+
+    set {global_data.config/server.name} to {@server.name}
+    set {global_data.config/server.ip} to {@server.ip}
+    set {global_data.config/server.color} to {@server.color}

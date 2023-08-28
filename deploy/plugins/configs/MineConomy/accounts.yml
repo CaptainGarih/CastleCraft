@@ -1,0 +1,9 @@
+# === MineConomy Accounts ===
+# 
+#     Do not edit!
+
+Accounts:
+  CaptainGarih:
+    Balance: 0.0
+    Currency: Dollars
+    Status: NORMAL

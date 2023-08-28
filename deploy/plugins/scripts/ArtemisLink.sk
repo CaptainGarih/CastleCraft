@@ -1,0 +1,231 @@
+options:
+
+	artemislink.config.version: "1.0.2b"
+
+	artemislink.config.prefix: "&bArtemis&eLink &6|"
+
+#		Load and Unload messages
+
+on load:
+
+	send "%{@artemislink.config.prefix}% &aArtemis system enabled successfully." to console
+	send "%{@artemislink.config.prefix}% &aVersion &f%{@artemislink.config.version}%" to console
+
+on unload:
+
+	send "%{@artemislink.config.prefix}% &cArtemis system successfully disabled." to console
+	send "%{@artemislink.config.prefix}% &aVersion &f%{@artemislink.config.version}%" to console
+
+#		API
+function ARTEMISLINK_TransferPlayer(p: player, config: text, server: text):
+
+	if {_config} contains "--fast":
+		send "&e[SERVER SEARCH] &eServer: &f%{_server}% &eat Priority: &fMaximum" to {_p}
+		send "&e[SERVER SEARCH] &7Searching for a server, please wait..." to {_p}
+	else:
+		if {_config} contains "--nofast":
+			send "&e[SERVER SEARCH] &eServer: &f%{_server}% &eat Priority: &fLow" to {_p}
+			send "&e[SERVER SEARCH] &7Searching for a server, please wait..." to {_p}
+		else:
+			send "&e[SERVER SEARCH] &eServer: &f%{_server}% &eat Priority: &fNormal" to {_p}
+			send "&e[SERVER SEARCH] &7Searching for a server, please wait..." to {_p}
+
+	set {_serverfound?} to false
+	
+	while {_serverfound?} is false:
+
+		if {_p} is not online:
+			stop
+
+		loop all bungee servers:
+
+			if "%loop-value%" is "%{_server}%":
+
+				if {_config} contains "--nofast":
+
+					chance of 17%:
+
+						set {_serverfound?} to true
+
+						send "&aServer found, connection..." to {_p}
+				
+				else:
+
+					if {_config} contains "--fast":
+
+						set {_serverfound?} to true
+						send "&aServer found, connection..." to {_p}
+
+					else:
+
+						chance of 30%:
+
+							set {_serverfound?} to true
+
+							send "&aServer found, connection..." to {_p}
+			
+			wait 1 tick
+		
+		wait 1 tick
+	
+	wait 10 ticks
+	
+	send bungee player named "%{_p}%" to bungee server named "%{_server}%"
+
+#		Main command
+
+command sendplayer [<player>] [<text>] [<text>]:
+
+	executable by: console
+	trigger:
+
+		ARTEMISLINK_TransferPlayer(arg-1, arg-3, arg-2)
+		send "%{@artemislink.config.prefix}% &atransfer:&e%arg-1%&a->&e%arg-2%&a&&&econfig?=&f%arg-3%" to console
+
+command network [<text>] [<text>]:
+
+	aliases: net, artemis, proxy
+
+	executable by: console
+	trigger:
+
+		#		Arg-1 not defined -> Version message
+		if arg-1 is not set:
+
+			send "%{@artemislink.config.prefix}% &aVersion &f%{@artemislink.config.version}%" to console
+		
+		#		Get the list of all connected servers on the network
+		if arg-1 is "servers":
+			loop all bungee servers:
+
+				set {_port} to bungee port of bungee server named "%loop-value%"
+				set {_address} to bungee address of bungee server named "%loop-value%"
+
+				send "%{@artemislink.config.prefix}% &econnected::&a%loop-value%&f//&b_port=&f%{_port}%&e&&&b_address=&f%{_address}%" to console
+				wait 1 tick
+		
+		
+		#		Get number of players (online) on the network, network status, ...
+		if arg-1 is "info":
+
+			if client is connected:
+
+				send "%{@artemislink.config.prefix}% &eNetwork::&aconnected" to console
+				set {_connectedplayers} to 0
+				loop all bungee players:
+
+					add 1 to {_n}
+				
+				send "%{@artemislink.config.prefix}% &eOnline players::&b%{_connectedplayers}%" to console
+
+			else:
+
+				send "%{@artemislink.config.prefix}% &eNetwork::&cdisconnected" to console
+			
+			stop
+			set {_n} to 0
+			loop all bungee players:
+
+				add 1 to {_n}
+		
+		#		Broadcast a message on the network
+		if arg-1 is "broadcast":
+
+			if arg-2 is set:
+
+				set {_msg} to arg-2
+				replace all "&" with "§" in {_msg}
+				broadcast {_msg} to network
+				send "%{@artemislink.config.prefix}% &aMessage sent to entire network successfully." to console
+				send "%{@artemislink.config.prefix}% &fMessage : %{_msg}%" to console
+
+			else:
+
+				send "%{@artemislink.config.prefix}% &b/network &ebroadcast &f< TEXT >" to console
+		
+		#		Disconnect the server from the network
+		if arg-1 is "disconnect":
+
+			send "%{@artemislink.config.prefix}% &fDisconnecting from the network in progress..." to console
+
+			wait 5 ticks
+
+			send "%{@artemislink.config.prefix}% &fChanging the network configuration..." to console
+			set {artemis.config.connect?} to false
+
+			wait 1 tick
+
+			send "%{@artemislink.config.prefix}% &fDisconnecting the network link..." to console
+			disconnect this client
+
+			wait 5 ticks
+
+			if client is connected:
+
+				send "%{@artemislink.config.prefix}% &cFailed to disconnect from the network." to console
+				stop
+
+			else:
+				
+				send "%{@artemislink.config.prefix}% &aSuccessfully disconnected from the network." to console
+				stop
+		
+		#		Reconnect the server on the network
+		if arg-1 is "connect":
+
+			send "%{@artemislink.config.prefix}% &fChanging the network configuration..." to console
+
+			wait 5 ticks
+
+			set {artemis.config.connect?} to true
+
+			wait 5 ticks
+
+			send "%{@artemislink.config.prefix}% &aNetwork configuration change completed successfully." to console
+		
+			stop
+		
+		#		Execute command
+		if arg-1 is "execcmd":
+
+			make all servers execute console command arg-2
+
+#		Connection's service
+every 5 seconds:
+
+	if {artemis.config.connect?} = true:
+	
+		if client is connected:
+
+			stop
+
+		else:
+
+			send "%{@artemislink.config.prefix}% &cServer disconnected from the network!" to console
+			
+			wait 2 ticks
+
+			send "%{@artemislink.config.prefix}% &fAttempt to reconnect to the network..." to console
+
+			wait 5 ticks
+
+			send "%{@artemislink.config.prefix}% &fConfiguring connection request..." to console
+			wait 5 ticks
+
+			create new bungee connection:
+
+				set address of connection to "10.0.0.36"
+				set port of connection to 2006
+				set password of connection to "3Bej88;PB3A1IR3O"
+
+			start new connection with connection
+
+			wait 3 ticks
+
+			if client is connected:
+
+				send "%{@artemislink.config.prefix}% &aSuccessful network connection attempt." to console
+			
+			else:
+
+				send "%{@artemislink.config.prefix}% &cNetwork connection failed." to console

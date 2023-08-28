@@ -1,0 +1,1007 @@
+uctor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3746)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2509)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2480)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2438)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1381)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.listeners.MCListener.onPlayerJoin(MCListener.java:34)
+	at com.destroystokyo.paper.event.executor.asm.generated.GeneratedEventExecutor25.execute(Unknown Source)
+	at org.bukkit.plugin.EventExecutor$2.execute(EventExecutor.java:70)
+	... 14 more
+Caused by: java.net.SocketException: Connection reset by peer
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3728)
+	... 24 more
+
+[08/20 10:18:59] [ERROR]		MySQL Error: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after connection closed.
+	at jdk.internal.reflect.GeneratedConstructorAccessor151.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.ConnectionImpl.throwConnectionClosedException(ConnectionImpl.java:1184)
+	at com.mysql.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:1179)
+	at com.mysql.jdbc.ConnectionImpl.createStatement(ConnectionImpl.java:2371)
+	at com.mysql.jdbc.ConnectionImpl.createStatement(ConnectionImpl.java:2355)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.MCCom.create(MCCom.java:335)
+	at net.milkbowl.vault.economy.plugins.Economy_MineConomy.getBalance(Economy_MineConomy.java:117)
+	at net.milkbowl.vault.economy.AbstractEconomy.getBalance(AbstractEconomy.java:22)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:54)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:38)
+	at ch.njol.skript.registrations.Converters.convert(Converters.java:390)
+	at ch.njol.skript.registrations.Converters.convertUnsafe(Converters.java:381)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:102)
+	at ch.njol.skript.expressions.base.SimplePropertyExpression.get(SimplePropertyExpression.java:53)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:73)
+	at ch.njol.skript.lang.util.SimpleExpression.getArray(SimpleExpression.java:99)
+	at ch.njol.skript.lang.VariableString.toString(VariableString.java:449)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:662)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:64)
+	at tk.shanebee.bee.elements.board.effects.EffBoardLine.execute(EffBoardLine.java:63)
+	at ch.njol.skript.lang.Effect.run(Effect.java:51)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:60)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:88)
+	at ch.njol.skript.lang.Trigger.execute(Trigger.java:56)
+	at ch.njol.skript.SkriptEventHandler.check(SkriptEventHandler.java:142)
+	at ch.njol.skript.SkriptEventHandler.access$000(SkriptEventHandler.java:53)
+	at ch.njol.skript.SkriptEventHandler$PriorityListener.lambda$new$0(SkriptEventHandler.java:71)
+	at co.aikar.timings.TimedEventExecutor.execute(TimedEventExecutor.java:78)
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:513)
+	at net.minecraft.server.v1_12_R1.PlayerList.onPlayerJoin(PlayerList.java:370)
+	at net.minecraft.server.v1_12_R1.PlayerList.a(PlayerList.java:183)
+	at net.minecraft.server.v1_12_R1.LoginListener.b(LoginListener.java:178)
+	at net.minecraft.server.v1_12_R1.LoginListener.e(LoginListener.java:68)
+	at net.minecraft.server.v1_12_R1.NetworkManager.a(NetworkManager.java:273)
+	at net.minecraft.server.v1_12_R1.ServerConnection.c(ServerConnection.java:150)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.D(MinecraftServer.java:948)
+	at net.minecraft.server.v1_12_R1.DedicatedServer.D(DedicatedServer.java:423)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.C(MinecraftServer.java:774)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.run(MinecraftServer.java:666)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was 83,708,924 milliseconds ago.  The last packet sent successfully to the server was 83,708,924 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3746)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2509)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2480)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2438)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1381)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.listeners.MCListener.onPlayerJoin(MCListener.java:34)
+	at com.destroystokyo.paper.event.executor.asm.generated.GeneratedEventExecutor25.execute(Unknown Source)
+	at org.bukkit.plugin.EventExecutor$2.execute(EventExecutor.java:70)
+	... 14 more
+Caused by: java.net.SocketException: Connection reset by peer
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3728)
+	... 24 more
+
+[08/20 10:18:59] [ERROR]		MySQL Error: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after connection closed.
+	at jdk.internal.reflect.GeneratedConstructorAccessor151.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.ConnectionImpl.throwConnectionClosedException(ConnectionImpl.java:1184)
+	at com.mysql.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:1179)
+	at com.mysql.jdbc.ConnectionImpl.createStatement(ConnectionImpl.java:2371)
+	at com.mysql.jdbc.ConnectionImpl.createStatement(ConnectionImpl.java:2355)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.create(MySqlAccounting.java:131)
+	at me.mjolnir.mineconomy.internal.MCCom.create(MCCom.java:340)
+	at net.milkbowl.vault.economy.plugins.Economy_MineConomy.getBalance(Economy_MineConomy.java:117)
+	at net.milkbowl.vault.economy.AbstractEconomy.getBalance(AbstractEconomy.java:22)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:54)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:38)
+	at ch.njol.skript.registrations.Converters.convert(Converters.java:390)
+	at ch.njol.skript.registrations.Converters.convertUnsafe(Converters.java:381)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:102)
+	at ch.njol.skript.expressions.base.SimplePropertyExpression.get(SimplePropertyExpression.java:53)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:73)
+	at ch.njol.skript.lang.util.SimpleExpression.getArray(SimpleExpression.java:99)
+	at ch.njol.skript.lang.VariableString.toString(VariableString.java:449)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:662)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:64)
+	at tk.shanebee.bee.elements.board.effects.EffBoardLine.execute(EffBoardLine.java:63)
+	at ch.njol.skript.lang.Effect.run(Effect.java:51)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:60)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:88)
+	at ch.njol.skript.lang.Trigger.execute(Trigger.java:56)
+	at ch.njol.skript.SkriptEventHandler.check(SkriptEventHandler.java:142)
+	at ch.njol.skript.SkriptEventHandler.access$000(SkriptEventHandler.java:53)
+	at ch.njol.skript.SkriptEventHandler$PriorityListener.lambda$new$0(SkriptEventHandler.java:71)
+	at co.aikar.timings.TimedEventExecutor.execute(TimedEventExecutor.java:78)
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:513)
+	at net.minecraft.server.v1_12_R1.PlayerList.onPlayerJoin(PlayerList.java:370)
+	at net.minecraft.server.v1_12_R1.PlayerList.a(PlayerList.java:183)
+	at net.minecraft.server.v1_12_R1.LoginListener.b(LoginListener.java:178)
+	at net.minecraft.server.v1_12_R1.LoginListener.e(LoginListener.java:68)
+	at net.minecraft.server.v1_12_R1.NetworkManager.a(NetworkManager.java:273)
+	at net.minecraft.server.v1_12_R1.ServerConnection.c(ServerConnection.java:150)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.D(MinecraftServer.java:948)
+	at net.minecraft.server.v1_12_R1.DedicatedServer.D(DedicatedServer.java:423)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.C(MinecraftServer.java:774)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.run(MinecraftServer.java:666)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was 83,708,924 milliseconds ago.  The last packet sent successfully to the server was 83,708,924 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3746)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2509)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2480)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2438)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1381)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.listeners.MCListener.onPlayerJoin(MCListener.java:34)
+	at com.destroystokyo.paper.event.executor.asm.generated.GeneratedEventExecutor25.execute(Unknown Source)
+	at org.bukkit.plugin.EventExecutor$2.execute(EventExecutor.java:70)
+	... 14 more
+Caused by: java.net.SocketException: Connection reset by peer
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3728)
+	... 24 more
+
+[08/20 10:18:59] [ERROR]		MySQL Error: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after connection closed.
+	at jdk.internal.reflect.GeneratedConstructorAccessor151.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.ConnectionImpl.throwConnectionClosedException(ConnectionImpl.java:1184)
+	at com.mysql.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:1179)
+	at com.mysql.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:4071)
+	at com.mysql.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:4040)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.loadAccount(MySqlAccounting.java:56)
+	at me.mjolnir.mineconomy.internal.MCCom.getAccount(MCCom.java:49)
+	at me.mjolnir.mineconomy.internal.MCCom.getCurrency(MCCom.java:590)
+	at me.mjolnir.mineconomy.internal.MCCom.getExternalBalance(MCCom.java:1052)
+	at net.milkbowl.vault.economy.plugins.Economy_MineConomy.getBalance(Economy_MineConomy.java:118)
+	at net.milkbowl.vault.economy.AbstractEconomy.getBalance(AbstractEconomy.java:22)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:54)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:38)
+	at ch.njol.skript.registrations.Converters.convert(Converters.java:390)
+	at ch.njol.skript.registrations.Converters.convertUnsafe(Converters.java:381)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:102)
+	at ch.njol.skript.expressions.base.SimplePropertyExpression.get(SimplePropertyExpression.java:53)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:73)
+	at ch.njol.skript.lang.util.SimpleExpression.getArray(SimpleExpression.java:99)
+	at ch.njol.skript.lang.VariableString.toString(VariableString.java:449)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:662)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:64)
+	at tk.shanebee.bee.elements.board.effects.EffBoardLine.execute(EffBoardLine.java:63)
+	at ch.njol.skript.lang.Effect.run(Effect.java:51)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:60)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:88)
+	at ch.njol.skript.lang.Trigger.execute(Trigger.java:56)
+	at ch.njol.skript.SkriptEventHandler.check(SkriptEventHandler.java:142)
+	at ch.njol.skript.SkriptEventHandler.access$000(SkriptEventHandler.java:53)
+	at ch.njol.skript.SkriptEventHandler$PriorityListener.lambda$new$0(SkriptEventHandler.java:71)
+	at co.aikar.timings.TimedEventExecutor.execute(TimedEventExecutor.java:78)
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:513)
+	at net.minecraft.server.v1_12_R1.PlayerList.onPlayerJoin(PlayerList.java:370)
+	at net.minecraft.server.v1_12_R1.PlayerList.a(PlayerList.java:183)
+	at net.minecraft.server.v1_12_R1.LoginListener.b(LoginListener.java:178)
+	at net.minecraft.server.v1_12_R1.LoginListener.e(LoginListener.java:68)
+	at net.minecraft.server.v1_12_R1.NetworkManager.a(NetworkManager.java:273)
+	at net.minecraft.server.v1_12_R1.ServerConnection.c(ServerConnection.java:150)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.D(MinecraftServer.java:948)
+	at net.minecraft.server.v1_12_R1.DedicatedServer.D(DedicatedServer.java:423)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.C(MinecraftServer.java:774)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.run(MinecraftServer.java:666)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was 83,708,924 milliseconds ago.  The last packet sent successfully to the server was 83,708,924 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3746)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2509)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2480)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2438)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1381)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.listeners.MCListener.onPlayerJoin(MCListener.java:34)
+	at com.destroystokyo.paper.event.executor.asm.generated.GeneratedEventExecutor25.execute(Unknown Source)
+	at org.bukkit.plugin.EventExecutor$2.execute(EventExecutor.java:70)
+	... 14 more
+Caused by: java.net.SocketException: Connection reset by peer
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3728)
+	... 24 more
+
+[08/20 10:18:59] [ERROR]		MySQL Error: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after connection closed.
+	at jdk.internal.reflect.GeneratedConstructorAccessor151.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.ConnectionImpl.throwConnectionClosedException(ConnectionImpl.java:1184)
+	at com.mysql.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:1179)
+	at com.mysql.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:4071)
+	at com.mysql.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:4040)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.loadAccount(MySqlAccounting.java:56)
+	at me.mjolnir.mineconomy.internal.MCCom.getAccount(MCCom.java:49)
+	at me.mjolnir.mineconomy.internal.MCCom.getCurrency(MCCom.java:590)
+	at me.mjolnir.mineconomy.internal.MCCom.getExternalBalance(MCCom.java:1052)
+	at net.milkbowl.vault.economy.plugins.Economy_MineConomy.getBalance(Economy_MineConomy.java:113)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:56)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:38)
+	at ch.njol.skript.registrations.Converters.convert(Converters.java:390)
+	at ch.njol.skript.registrations.Converters.convertUnsafe(Converters.java:381)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:102)
+	at ch.njol.skript.expressions.base.SimplePropertyExpression.get(SimplePropertyExpression.java:53)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:73)
+	at ch.njol.skript.lang.util.SimpleExpression.getArray(SimpleExpression.java:99)
+	at ch.njol.skript.lang.VariableString.toString(VariableString.java:449)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:662)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:64)
+	at tk.shanebee.bee.elements.board.effects.EffBoardLine.execute(EffBoardLine.java:63)
+	at ch.njol.skript.lang.Effect.run(Effect.java:51)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:60)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:88)
+	at ch.njol.skript.lang.Trigger.execute(Trigger.java:56)
+	at ch.njol.skript.SkriptEventHandler.check(SkriptEventHandler.java:142)
+	at ch.njol.skript.SkriptEventHandler.access$000(SkriptEventHandler.java:53)
+	at ch.njol.skript.SkriptEventHandler$PriorityListener.lambda$new$0(SkriptEventHandler.java:71)
+	at co.aikar.timings.TimedEventExecutor.execute(TimedEventExecutor.java:78)
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:513)
+	at net.minecraft.server.v1_12_R1.PlayerList.onPlayerJoin(PlayerList.java:370)
+	at net.minecraft.server.v1_12_R1.PlayerList.a(PlayerList.java:183)
+	at net.minecraft.server.v1_12_R1.LoginListener.b(LoginListener.java:178)
+	at net.minecraft.server.v1_12_R1.LoginListener.e(LoginListener.java:68)
+	at net.minecraft.server.v1_12_R1.NetworkManager.a(NetworkManager.java:273)
+	at net.minecraft.server.v1_12_R1.ServerConnection.c(ServerConnection.java:150)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.D(MinecraftServer.java:948)
+	at net.minecraft.server.v1_12_R1.DedicatedServer.D(DedicatedServer.java:423)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.C(MinecraftServer.java:774)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.run(MinecraftServer.java:666)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was 83,708,924 milliseconds ago.  The last packet sent successfully to the server was 83,708,924 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3746)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2509)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2480)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2438)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1381)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.listeners.MCListener.onPlayerJoin(MCListener.java:34)
+	at com.destroystokyo.paper.event.executor.asm.generated.GeneratedEventExecutor25.execute(Unknown Source)
+	at org.bukkit.plugin.EventExecutor$2.execute(EventExecutor.java:70)
+	... 14 more
+Caused by: java.net.SocketException: Connection reset by peer
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3728)
+	... 24 more
+
+[08/20 10:18:59] [ERROR]		MySQL Error: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after connection closed.
+	at jdk.internal.reflect.GeneratedConstructorAccessor151.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.ConnectionImpl.throwConnectionClosedException(ConnectionImpl.java:1184)
+	at com.mysql.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:1179)
+	at com.mysql.jdbc.ConnectionImpl.createStatement(ConnectionImpl.java:2371)
+	at com.mysql.jdbc.ConnectionImpl.createStatement(ConnectionImpl.java:2355)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.MCCom.create(MCCom.java:335)
+	at net.milkbowl.vault.economy.plugins.Economy_MineConomy.getBalance(Economy_MineConomy.java:117)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:56)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:38)
+	at ch.njol.skript.registrations.Converters.convert(Converters.java:390)
+	at ch.njol.skript.registrations.Converters.convertUnsafe(Converters.java:381)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:102)
+	at ch.njol.skript.expressions.base.SimplePropertyExpression.get(SimplePropertyExpression.java:53)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:73)
+	at ch.njol.skript.lang.util.SimpleExpression.getArray(SimpleExpression.java:99)
+	at ch.njol.skript.lang.VariableString.toString(VariableString.java:449)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:662)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:64)
+	at tk.shanebee.bee.elements.board.effects.EffBoardLine.execute(EffBoardLine.java:63)
+	at ch.njol.skript.lang.Effect.run(Effect.java:51)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:60)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:88)
+	at ch.njol.skript.lang.Trigger.execute(Trigger.java:56)
+	at ch.njol.skript.SkriptEventHandler.check(SkriptEventHandler.java:142)
+	at ch.njol.skript.SkriptEventHandler.access$000(SkriptEventHandler.java:53)
+	at ch.njol.skript.SkriptEventHandler$PriorityListener.lambda$new$0(SkriptEventHandler.java:71)
+	at co.aikar.timings.TimedEventExecutor.execute(TimedEventExecutor.java:78)
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:513)
+	at net.minecraft.server.v1_12_R1.PlayerList.onPlayerJoin(PlayerList.java:370)
+	at net.minecraft.server.v1_12_R1.PlayerList.a(PlayerList.java:183)
+	at net.minecraft.server.v1_12_R1.LoginListener.b(LoginListener.java:178)
+	at net.minecraft.server.v1_12_R1.LoginListener.e(LoginListener.java:68)
+	at net.minecraft.server.v1_12_R1.NetworkManager.a(NetworkManager.java:273)
+	at net.minecraft.server.v1_12_R1.ServerConnection.c(ServerConnection.java:150)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.D(MinecraftServer.java:948)
+	at net.minecraft.server.v1_12_R1.DedicatedServer.D(DedicatedServer.java:423)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.C(MinecraftServer.java:774)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.run(MinecraftServer.java:666)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was 83,708,924 milliseconds ago.  The last packet sent successfully to the server was 83,708,924 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3746)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2509)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2480)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2438)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1381)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.listeners.MCListener.onPlayerJoin(MCListener.java:34)
+	at com.destroystokyo.paper.event.executor.asm.generated.GeneratedEventExecutor25.execute(Unknown Source)
+	at org.bukkit.plugin.EventExecutor$2.execute(EventExecutor.java:70)
+	... 14 more
+Caused by: java.net.SocketException: Connection reset by peer
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3728)
+	... 24 more
+
+[08/20 10:18:59] [ERROR]		MySQL Error: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after connection closed.
+	at jdk.internal.reflect.GeneratedConstructorAccessor151.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.ConnectionImpl.throwConnectionClosedException(ConnectionImpl.java:1184)
+	at com.mysql.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:1179)
+	at com.mysql.jdbc.ConnectionImpl.createStatement(ConnectionImpl.java:2371)
+	at com.mysql.jdbc.ConnectionImpl.createStatement(ConnectionImpl.java:2355)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.create(MySqlAccounting.java:131)
+	at me.mjolnir.mineconomy.internal.MCCom.create(MCCom.java:340)
+	at net.milkbowl.vault.economy.plugins.Economy_MineConomy.getBalance(Economy_MineConomy.java:117)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:56)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:38)
+	at ch.njol.skript.registrations.Converters.convert(Converters.java:390)
+	at ch.njol.skript.registrations.Converters.convertUnsafe(Converters.java:381)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:102)
+	at ch.njol.skript.expressions.base.SimplePropertyExpression.get(SimplePropertyExpression.java:53)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:73)
+	at ch.njol.skript.lang.util.SimpleExpression.getArray(SimpleExpression.java:99)
+	at ch.njol.skript.lang.VariableString.toString(VariableString.java:449)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:662)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:64)
+	at tk.shanebee.bee.elements.board.effects.EffBoardLine.execute(EffBoardLine.java:63)
+	at ch.njol.skript.lang.Effect.run(Effect.java:51)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:60)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:88)
+	at ch.njol.skript.lang.Trigger.execute(Trigger.java:56)
+	at ch.njol.skript.SkriptEventHandler.check(SkriptEventHandler.java:142)
+	at ch.njol.skript.SkriptEventHandler.access$000(SkriptEventHandler.java:53)
+	at ch.njol.skript.SkriptEventHandler$PriorityListener.lambda$new$0(SkriptEventHandler.java:71)
+	at co.aikar.timings.TimedEventExecutor.execute(TimedEventExecutor.java:78)
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:513)
+	at net.minecraft.server.v1_12_R1.PlayerList.onPlayerJoin(PlayerList.java:370)
+	at net.minecraft.server.v1_12_R1.PlayerList.a(PlayerList.java:183)
+	at net.minecraft.server.v1_12_R1.LoginListener.b(LoginListener.java:178)
+	at net.minecraft.server.v1_12_R1.LoginListener.e(LoginListener.java:68)
+	at net.minecraft.server.v1_12_R1.NetworkManager.a(NetworkManager.java:273)
+	at net.minecraft.server.v1_12_R1.ServerConnection.c(ServerConnection.java:150)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.D(MinecraftServer.java:948)
+	at net.minecraft.server.v1_12_R1.DedicatedServer.D(DedicatedServer.java:423)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.C(MinecraftServer.java:774)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.run(MinecraftServer.java:666)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was 83,708,924 milliseconds ago.  The last packet sent successfully to the server was 83,708,924 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3746)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2509)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2480)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2438)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1381)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.listeners.MCListener.onPlayerJoin(MCListener.java:34)
+	at com.destroystokyo.paper.event.executor.asm.generated.GeneratedEventExecutor25.execute(Unknown Source)
+	at org.bukkit.plugin.EventExecutor$2.execute(EventExecutor.java:70)
+	... 14 more
+Caused by: java.net.SocketException: Connection reset by peer
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3728)
+	... 24 more
+
+[08/20 10:18:59] [ERROR]		MySQL Error: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after connection closed.
+	at jdk.internal.reflect.GeneratedConstructorAccessor151.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.ConnectionImpl.throwConnectionClosedException(ConnectionImpl.java:1184)
+	at com.mysql.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:1179)
+	at com.mysql.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:4071)
+	at com.mysql.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:4040)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.loadAccount(MySqlAccounting.java:56)
+	at me.mjolnir.mineconomy.internal.MCCom.getAccount(MCCom.java:49)
+	at me.mjolnir.mineconomy.internal.MCCom.getCurrency(MCCom.java:590)
+	at me.mjolnir.mineconomy.internal.MCCom.getExternalBalance(MCCom.java:1052)
+	at net.milkbowl.vault.economy.plugins.Economy_MineConomy.getBalance(Economy_MineConomy.java:118)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:56)
+	at ch.njol.skript.hooks.economy.expressions.ExprBalance.convert(ExprBalance.java:38)
+	at ch.njol.skript.registrations.Converters.convert(Converters.java:390)
+	at ch.njol.skript.registrations.Converters.convertUnsafe(Converters.java:381)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:102)
+	at ch.njol.skript.expressions.base.SimplePropertyExpression.get(SimplePropertyExpression.java:53)
+	at ch.njol.skript.expressions.base.PropertyExpression.get(PropertyExpression.java:73)
+	at ch.njol.skript.lang.util.SimpleExpression.getArray(SimpleExpression.java:99)
+	at ch.njol.skript.lang.VariableString.toString(VariableString.java:449)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:662)
+	at ch.njol.skript.lang.VariableString.getSingle(VariableString.java:64)
+	at tk.shanebee.bee.elements.board.effects.EffBoardLine.execute(EffBoardLine.java:63)
+	at ch.njol.skript.lang.Effect.run(Effect.java:51)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:60)
+	at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:88)
+	at ch.njol.skript.lang.Trigger.execute(Trigger.java:56)
+	at ch.njol.skript.SkriptEventHandler.check(SkriptEventHandler.java:142)
+	at ch.njol.skript.SkriptEventHandler.access$000(SkriptEventHandler.java:53)
+	at ch.njol.skript.SkriptEventHandler$PriorityListener.lambda$new$0(SkriptEventHandler.java:71)
+	at co.aikar.timings.TimedEventExecutor.execute(TimedEventExecutor.java:78)
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:513)
+	at net.minecraft.server.v1_12_R1.PlayerList.onPlayerJoin(PlayerList.java:370)
+	at net.minecraft.server.v1_12_R1.PlayerList.a(PlayerList.java:183)
+	at net.minecraft.server.v1_12_R1.LoginListener.b(LoginListener.java:178)
+	at net.minecraft.server.v1_12_R1.LoginListener.e(LoginListener.java:68)
+	at net.minecraft.server.v1_12_R1.NetworkManager.a(NetworkManager.java:273)
+	at net.minecraft.server.v1_12_R1.ServerConnection.c(ServerConnection.java:150)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.D(MinecraftServer.java:948)
+	at net.minecraft.server.v1_12_R1.DedicatedServer.D(DedicatedServer.java:423)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.C(MinecraftServer.java:774)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.run(MinecraftServer.java:666)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was 83,708,924 milliseconds ago.  The last packet sent successfully to the server was 83,708,924 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3746)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2509)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2480)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2438)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1381)
+	at me.mjolnir.mineconomy.internal.MySqlAccounting.exists(MySqlAccounting.java:109)
+	at me.mjolnir.mineconomy.internal.MCCom.exists(MCCom.java:166)
+	at me.mjolnir.mineconomy.internal.listeners.MCListener.onPlayerJoin(MCListener.java:34)
+	at com.destroystokyo.paper.event.executor.asm.generated.GeneratedEventExecutor25.execute(Unknown Source)
+	at org.bukkit.plugin.EventExecutor$2.execute(EventExecutor.java:70)
+	... 14 more
+Caused by: java.net.SocketException: Connection reset by peer
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3728)
+	... 24 more
+
+[08/20 10:20:37] [INFO]		Disabling MineConomy...
+[08/20 10:20:51] [DEV]		Enabling plugin...
+[08/20 10:20:51] [DEV]		Loading Config file...
+[08/20 10:20:51] [DEV]		Config file loaded!
+[08/20 10:20:51] [DEV]		MySQL is enabled for Accounts.
+[08/20 10:20:51] [INFO]		Loading Accounts from database...
+[08/20 10:20:51] [INFO]		Accounts loaded from database!
+[08/20 10:20:51] [DEV]		Loading Banks file...
+[08/20 10:20:51] [DEV]		Banks file loaded!
+[08/20 10:20:51] [DEV]		Loading Currency file...
+[08/20 10:20:51] [DEV]		Currency file loaded!
+[08/20 10:20:51] [DEV]		Loading Language file...
+[08/20 10:20:51] [DEV]		Language file loaded!
+[08/20 10:20:51] [INFO]		Interest Disabled.
+[08/20 10:20:51] [INFO]		Tax Disabled.
+[08/20 10:20:51] [INFO]		GUI Disabled.
+[08/20 10:20:51] [DEV]		Checking for updates...
+[08/20 10:20:51] [IMPORTANT]	Version 1.7.3 by Bodyash is enabled!
+[08/20 10:21:04] [DEV]		Auto-Saving files...
+[08/20 10:21:04] [DEV]		Finished auto-save.
+[08/20 11:21:02] [DEV]		Auto-Saving files...
+[08/20 11:21:02] [DEV]		Finished auto-save.
+[08/20 12:21:02] [DEV]		Auto-Saving files...
+[08/20 12:21:02] [DEV]		Finished auto-save.
+[08/20 13:21:02] [DEV]		Auto-Saving files...
+[08/20 13:21:02] [DEV]		Finished auto-save.
+[08/20 14:21:02] [DEV]		Auto-Saving files...
+[08/20 14:21:02] [DEV]		Finished auto-save.
+[08/20 15:21:02] [DEV]		Auto-Saving files...
+[08/20 15:21:02] [DEV]		Finished auto-save.
+[08/20 16:21:02] [DEV]		Auto-Saving files...
+[08/20 16:21:02] [DEV]		Finished auto-save.
+[08/20 17:21:02] [DEV]		Auto-Saving files...
+[08/20 17:21:02] [DEV]		Finished auto-save.
+[08/20 18:21:02] [DEV]		Auto-Saving files...
+[08/20 18:21:02] [DEV]		Finished auto-save.
+[08/20 19:21:03] [DEV]		Auto-Saving files...
+[08/20 19:21:03] [DEV]		Finished auto-save.
+[08/20 20:21:03] [DEV]		Auto-Saving files...
+[08/20 20:21:03] [DEV]		Finished auto-save.
+[08/20 21:21:03] [DEV]		Auto-Saving files...
+[08/20 21:21:03] [DEV]		Finished auto-save.
+[08/20 22:21:03] [DEV]		Auto-Saving files...
+[08/20 22:21:03] [DEV]		Finished auto-save.
+[08/20 23:21:03] [DEV]		Auto-Saving files...
+[08/20 23:21:03] [DEV]		Finished auto-save.
+[08/21 00:21:03] [DEV]		Auto-Saving files...
+[08/21 00:21:03] [DEV]		Finished auto-save.
+[08/21 01:21:03] [DEV]		Auto-Saving files...
+[08/21 01:21:03] [DEV]		Finished auto-save.
+[08/21 02:21:03] [DEV]		Auto-Saving files...
+[08/21 02:21:03] [DEV]		Finished auto-save.
+[08/21 03:21:03] [DEV]		Auto-Saving files...
+[08/21 03:21:03] [DEV]		Finished auto-save.
+[08/21 04:21:03] [DEV]		Auto-Saving files...
+[08/21 04:21:03] [DEV]		Finished auto-save.
+[08/21 05:21:03] [DEV]		Auto-Saving files...
+[08/21 05:21:03] [DEV]		Finished auto-save.
+[08/21 06:21:03] [DEV]		Auto-Saving files...
+[08/21 06:21:03] [DEV]		Finished auto-save.
+[08/21 07:21:03] [DEV]		Auto-Saving files...
+[08/21 07:21:03] [DEV]		Finished auto-save.
+[08/21 08:21:03] [DEV]		Auto-Saving files...
+[08/21 08:21:03] [DEV]		Finished auto-save.
+[08/21 09:21:04] [DEV]		Auto-Saving files...
+[08/21 09:21:04] [DEV]		Finished auto-save.
+[08/21 10:21:04] [DEV]		Auto-Saving files...
+[08/21 10:21:04] [DEV]		Finished auto-save.
+[08/21 11:20:42] [INFO]		Disabling MineConomy...
+[08/21 11:21:35] [DEV]		Enabling plugin...
+[08/21 11:21:35] [DEV]		Loading Config file...
+[08/21 11:21:35] [DEV]		Config file loaded!
+[08/21 11:21:35] [DEV]		MySQL is enabled for Accounts.
+[08/21 11:21:35] [INFO]		Loading Accounts from database...
+[08/21 11:21:36] [INFO]		Accounts loaded from database!
+[08/21 11:21:36] [DEV]		Loading Banks file...
+[08/21 11:21:36] [DEV]		Banks file loaded!
+[08/21 11:21:36] [DEV]		Loading Currency file...
+[08/21 11:21:36] [DEV]		Currency file loaded!
+[08/21 11:21:36] [DEV]		Loading Language file...
+[08/21 11:21:36] [DEV]		Language file loaded!
+[08/21 11:21:37] [INFO]		Interest Disabled.
+[08/21 11:21:37] [INFO]		Tax Disabled.
+[08/21 11:21:37] [INFO]		GUI Disabled.
+[08/21 11:21:37] [DEV]		Checking for updates...
+[08/21 11:21:37] [IMPORTANT]	Version 1.7.3 by Bodyash is enabled!
+[08/21 11:22:13] [DEV]		Auto-Saving files...
+[08/21 11:22:14] [DEV]		Finished auto-save.
+[08/21 12:22:09] [DEV]		Auto-Saving files...
+[08/21 12:22:09] [DEV]		Finished auto-save.
+[08/21 13:22:10] [DEV]		Auto-Saving files...
+[08/21 13:22:10] [DEV]		Finished auto-save.
+[08/21 14:22:10] [DEV]		Auto-Saving files...
+[08/21 14:22:10] [DEV]		Finished auto-save.
+[08/21 15:22:10] [DEV]		Auto-Saving files...
+[08/21 15:22:10] [DEV]		Finished auto-save.
+[08/21 16:22:10] [DEV]		Auto-Saving files...
+[08/21 16:22:10] [DEV]		Finished auto-save.
+[08/21 17:22:11] [DEV]		Auto-Saving files...
+[08/21 17:22:11] [DEV]		Finished auto-save.
+[08/21 18:22:11] [DEV]		Auto-Saving files...
+[08/21 18:22:11] [DEV]		Finished auto-save.
+[08/21 19:22:11] [DEV]		Auto-Saving files...
+[08/21 19:22:11] [DEV]		Finished auto-save.
+[08/21 20:22:11] [DEV]		Auto-Saving files...
+[08/21 20:22:11] [DEV]		Finished auto-save.
+[08/21 21:22:11] [DEV]		Auto-Saving files...
+[08/21 21:22:11] [DEV]		Finished auto-save.
+[08/21 22:22:11] [DEV]		Auto-Saving files...
+[08/21 22:22:11] [DEV]		Finished auto-save.
+[08/21 23:22:11] [DEV]		Auto-Saving files...
+[08/21 23:22:11] [DEV]		Finished auto-save.
+[08/22 00:22:11] [DEV]		Auto-Saving files...
+[08/22 00:22:11] [DEV]		Finished auto-save.
+[08/22 01:22:11] [DEV]		Auto-Saving files...
+[08/22 01:22:11] [DEV]		Finished auto-save.
+[08/22 02:22:12] [DEV]		Auto-Saving files...
+[08/22 02:22:12] [DEV]		Finished auto-save.
+[08/22 03:22:12] [DEV]		Auto-Saving files...
+[08/22 03:22:12] [DEV]		Finished auto-save.
+[08/22 04:22:12] [DEV]		Auto-Saving files...
+[08/22 04:22:12] [DEV]		Finished auto-save.
+[08/22 05:22:12] [DEV]		Auto-Saving files...
+[08/22 05:22:12] [DEV]		Finished auto-save.
+[08/22 06:22:12] [DEV]		Auto-Saving files...
+[08/22 06:22:12] [DEV]		Finished auto-save.
+[08/22 07:22:12] [DEV]		Auto-Saving files...
+[08/22 07:22:12] [DEV]		Finished auto-save.
+[08/22 08:22:12] [DEV]		Auto-Saving files...
+[08/22 08:22:12] [DEV]		Finished auto-save.
+[08/22 09:22:12] [DEV]		Auto-Saving files...
+[08/22 09:22:12] [DEV]		Finished auto-save.
+[08/22 10:22:13] [DEV]		Auto-Saving files...
+[08/22 10:22:13] [DEV]		Finished auto-save.
+[08/22 11:22:13] [DEV]		Auto-Saving files...
+[08/22 11:22:13] [DEV]		Finished auto-save.
+[08/22 12:22:13] [DEV]		Auto-Saving files...
+[08/22 12:22:13] [DEV]		Finished auto-save.
+[08/22 13:22:13] [DEV]		Auto-Saving files...
+[08/22 13:22:13] [DEV]		Finished auto-save.
+[08/22 14:22:13] [DEV]		Auto-Saving files...
+[08/22 14:22:13] [DEV]		Finished auto-save.
+[08/22 15:22:14] [DEV]		Auto-Saving files...
+[08/22 15:22:14] [DEV]		Finished auto-save.
+[08/22 16:22:14] [DEV]		Auto-Saving files...
+[08/22 16:22:14] [DEV]		Finished auto-save.
+[08/22 17:22:14] [DEV]		Auto-Saving files...
+[08/22 17:22:14] [DEV]		Finished auto-save.
+[08/22 18:12:25] [INFO]		Disabling MineConomy...
+[08/22 18:13:29] [DEV]		Enabling plugin...
+[08/22 18:13:29] [DEV]		Loading Config file...
+[08/22 18:13:29] [DEV]		Config file loaded!
+[08/22 18:13:29] [DEV]		MySQL is enabled for Accounts.
+[08/22 18:13:29] [INFO]		Loading Accounts from database...
+[08/22 18:13:30] [INFO]		Accounts loaded from database!
+[08/22 18:13:30] [DEV]		Loading Banks file...
+[08/22 18:13:30] [DEV]		Banks file loaded!
+[08/22 18:13:30] [DEV]		Loading Currency file...
+[08/22 18:13:30] [DEV]		Currency file loaded!
+[08/22 18:13:30] [DEV]		Loading Language file...
+[08/22 18:13:30] [DEV]		Language file loaded!
+[08/22 18:13:30] [INFO]		Interest Disabled.
+[08/22 18:13:30] [INFO]		Tax Disabled.
+[08/22 18:13:30] [INFO]		GUI Disabled.
+[08/22 18:13:30] [DEV]		Checking for updates...
+[08/22 18:13:30] [IMPORTANT]	Version 1.7.3 by Bodyash is enabled!
+[08/22 18:14:13] [DEV]		Auto-Saving files...
+[08/22 18:14:13] [DEV]		Finished auto-save.
+[08/22 18:55:26] [INFO]		Disabling MineConomy...
+[08/23 11:42:10] [DEV]		Enabling plugin...
+[08/23 11:42:10] [DEV]		Loading Config file...
+[08/23 11:42:10] [DEV]		Config file loaded!
+[08/23 11:42:10] [DEV]		MySQL is enabled for Accounts.
+[08/23 11:42:10] [INFO]		Loading Accounts from database...
+[08/23 11:42:10] [INFO]		Accounts loaded from database!
+[08/23 11:42:10] [DEV]		Loading Banks file...
+[08/23 11:42:10] [DEV]		Banks file loaded!
+[08/23 11:42:10] [DEV]		Loading Currency file...
+[08/23 11:42:10] [DEV]		Currency file loaded!
+[08/23 11:42:10] [DEV]		Loading Language file...
+[08/23 11:42:10] [DEV]		Language file loaded!
+[08/23 11:42:10] [INFO]		Interest Disabled.
+[08/23 11:42:10] [INFO]		Tax Disabled.
+[08/23 11:42:10] [INFO]		GUI Disabled.
+[08/23 11:42:10] [DEV]		Checking for updates...
+[08/23 11:42:10] [IMPORTANT]	Version 1.7.3 by Bodyash is enabled!
+[08/23 11:42:27] [DEV]		Auto-Saving files...
+[08/23 11:42:27] [DEV]		Finished auto-save.
+[08/23 11:48:38] [INFO]		Disabling MineConomy...
+[08/24 10:47:38] [DEV]		Enabling plugin...
+[08/24 10:47:38] [DEV]		Loading Config file...
+[08/24 10:47:38] [DEV]		Config file loaded!
+[08/24 10:47:38] [DEV]		MySQL is enabled for Accounts.
+[08/24 10:47:38] [INFO]		Loading Accounts from database...
+[08/24 10:47:40] [INFO]		Accounts loaded from database!
+[08/24 10:47:40] [DEV]		Loading Banks file...
+[08/24 10:47:40] [DEV]		Banks file loaded!
+[08/24 10:47:40] [DEV]		Loading Currency file...
+[08/24 10:47:40] [DEV]		Currency file loaded!
+[08/24 10:47:40] [DEV]		Loading Language file...
+[08/24 10:47:40] [DEV]		Language file loaded!
+[08/24 10:47:40] [INFO]		Interest Disabled.
+[08/24 10:47:40] [INFO]		Tax Disabled.
+[08/24 10:47:40] [INFO]		GUI Disabled.
+[08/24 10:47:40] [DEV]		Checking for updates...
+[08/24 10:47:40] [IMPORTANT]	Version 1.7.3 by Bodyash is enabled!
+[08/24 10:48:27] [DEV]		Auto-Saving files...
+[08/24 10:48:27] [DEV]		Finished auto-save.
+[08/24 11:48:19] [DEV]		Auto-Saving files...
+[08/24 11:48:19] [DEV]		Finished auto-save.
+[08/24 12:48:19] [DEV]		Auto-Saving files...
+[08/24 12:48:19] [DEV]		Finished auto-save.
+[08/24 13:48:19] [DEV]		Auto-Saving files...
+[08/24 13:48:19] [DEV]		Finished auto-save.
+[08/24 14:48:19] [DEV]		Auto-Saving files...
+[08/24 14:48:19] [DEV]		Finished auto-save.
+[08/24 15:48:19] [DEV]		Auto-Saving files...
+[08/24 15:48:19] [DEV]		Finished auto-save.
+[08/24 16:48:19] [DEV]		Auto-Saving files...
+[08/24 16:48:19] [DEV]		Finished auto-save.
+[08/24 17:48:19] [DEV]		Auto-Saving files...
+[08/24 17:48:19] [DEV]		Finished auto-save.
+[08/24 18:48:19] [DEV]		Auto-Saving files...
+[08/24 18:48:19] [DEV]		Finished auto-save.
+[08/24 19:48:19] [DEV]		Auto-Saving files...
+[08/24 19:48:19] [DEV]		Finished auto-save.
+[08/24 20:48:19] [DEV]		Auto-Saving files...
+[08/24 20:48:19] [DEV]		Finished auto-save.
+[08/24 21:48:20] [DEV]		Auto-Saving files...
+[08/24 21:48:20] [DEV]		Finished auto-save.
+[08/24 22:48:20] [DEV]		Auto-Saving files...
+[08/24 22:48:20] [DEV]		Finished auto-save.
+[08/24 23:48:20] [DEV]		Auto-Saving files...
+[08/24 23:48:20] [DEV]		Finished auto-save.
+[08/25 00:48:20] [DEV]		Auto-Saving files...
+[08/25 00:48:20] [DEV]		Finished auto-save.
+[08/25 01:48:20] [DEV]		Auto-Saving files...
+[08/25 01:48:20] [DEV]		Finished auto-save.
+[08/25 02:48:20] [DEV]		Auto-Saving files...
+[08/25 02:48:20] [DEV]		Finished auto-save.
+[08/25 03:48:20] [DEV]		Auto-Saving files...
+[08/25 03:48:20] [DEV]		Finished auto-save.
+[08/25 04:48:20] [DEV]		Auto-Saving files...
+[08/25 04:48:20] [DEV]		Finished auto-save.
+[08/25 05:48:20] [DEV]		Auto-Saving files...
+[08/25 05:48:20] [DEV]		Finished auto-save.
+[08/25 06:48:20] [DEV]		Auto-Saving files...
+[08/25 06:48:20] [DEV]		Finished auto-save.
+[08/25 07:48:20] [DEV]		Auto-Saving files...
+[08/25 07:48:20] [DEV]		Finished auto-save.
+[08/25 08:48:20] [DEV]		Auto-Saving files...
+[08/25 08:48:20] [DEV]		Finished auto-save.
+[08/25 09:48:20] [DEV]		Auto-Saving files...
+[08/25 09:48:20] [DEV]		Finished auto-save.
+[08/25 10:48:20] [DEV]		Auto-Saving files...
+[08/25 10:48:20] [DEV]		Finished auto-save.
+[08/25 11:48:21] [DEV]		Auto-Saving files...
+[08/25 11:48:21] [DEV]		Finished auto-save.
+[08/25 12:48:21] [DEV]		Auto-Saving files...
+[08/25 12:48:21] [DEV]		Finished auto-save.
+[08/25 13:48:21] [DEV]		Auto-Saving files...
+[08/25 13:48:21] [DEV]		Finished auto-save.
+[08/25 14:48:21] [DEV]		Auto-Saving files...
+[08/25 14:48:21] [DEV]		Finished auto-save.
+[08/25 15:48:21] [DEV]		Auto-Saving files...
+[08/25 15:48:21] [DEV]		Finished auto-save.
+[08/25 16:48:21] [DEV]		Auto-Saving files...
+[08/25 16:48:21] [DEV]		Finished auto-save.
+[08/25 17:48:21] [DEV]		Auto-Saving files...
+[08/25 17:48:21] [DEV]		Finished auto-save.
+[08/25 18:48:21] [DEV]		Auto-Saving files...
+[08/25 18:48:21] [DEV]		Finished auto-save.
+[08/25 19:48:21] [DEV]		Auto-Saving files...
+[08/25 19:48:21] [DEV]		Finished auto-save.
+[08/25 20:48:21] [DEV]		Auto-Saving files...
+[08/25 20:48:21] [DEV]		Finished auto-save.
+[08/25 21:48:21] [DEV]		Auto-Saving files...
+[08/25 21:48:21] [DEV]		Finished auto-save.
+[08/25 22:48:21] [DEV]		Auto-Saving files...
+[08/25 22:48:21] [DEV]		Finished auto-save.
+[08/25 23:48:21] [DEV]		Auto-Saving files...
+[08/25 23:48:21] [DEV]		Finished auto-save.
+[08/26 00:48:21] [DEV]		Auto-Saving files...
+[08/26 00:48:21] [DEV]		Finished auto-save.
+[08/26 01:48:21] [DEV]		Auto-Saving files...
+[08/26 01:48:21] [DEV]		Finished auto-save.
+[08/26 02:48:22] [DEV]		Auto-Saving files...
+[08/26 02:48:22] [DEV]		Finished auto-save.
+[08/26 03:48:22] [DEV]		Auto-Saving files...
+[08/26 03:48:22] [DEV]		Finished auto-save.
+[08/26 04:48:22] [DEV]		Auto-Saving files...
+[08/26 04:48:22] [DEV]		Finished auto-save.
+[08/26 05:48:22] [DEV]		Auto-Saving files...
+[08/26 05:48:22] [DEV]		Finished auto-save.
+[08/26 06:48:22] [DEV]		Auto-Saving files...
+[08/26 06:48:22] [DEV]		Finished auto-save.
+[08/26 07:48:22] [DEV]		Auto-Saving files...
+[08/26 07:48:22] [DEV]		Finished auto-save.
+[08/26 08:48:22] [DEV]		Auto-Saving files...
+[08/26 08:48:22] [DEV]		Finished auto-save.
+[08/26 09:48:22] [DEV]		Auto-Saving files...
+[08/26 09:48:22] [DEV]		Finished auto-save.
+[08/26 10:48:22] [DEV]		Auto-Saving files...
+[08/26 10:48:22] [DEV]		Finished auto-save.
+[08/26 11:48:22] [DEV]		Auto-Saving files...
+[08/26 11:48:22] [DEV]		Finished auto-save.
+[08/26 12:48:22] [DEV]		Auto-Saving files...
+[08/26 12:48:22] [DEV]		Finished auto-save.
+[08/26 13:48:22] [DEV]		Auto-Saving files...
+[08/26 13:48:22] [DEV]		Finished auto-save.
+[08/26 14:48:22] [DEV]		Auto-Saving files...
+[08/26 14:48:22] [DEV]		Finished auto-save.
+[08/26 15:48:22] [DEV]		Auto-Saving files...
+[08/26 15:48:22] [DEV]		Finished auto-save.
+[08/26 16:48:22] [DEV]		Auto-Saving files...
+[08/26 16:48:22] [DEV]		Finished auto-save.
+[08/26 17:48:22] [DEV]		Auto-Saving files...
+[08/26 17:48:22] [DEV]		Finished auto-save.
+[08/26 18:48:23] [DEV]		Auto-Saving files...
+[08/26 18:48:23] [DEV]		Finished auto-save.
+[08/26 19:48:23] [DEV]		Auto-Saving files...
+[08/26 19:48:23] [DEV]		Finished auto-save.
+[08/26 20:48:23] [DEV]		Auto-Saving files...
+[08/26 20:48:23] [DEV]		Finished auto-save.
+[08/26 21:48:23] [DEV]		Auto-Saving files...
+[08/26 21:48:23] [DEV]		Finished auto-save.
+[08/26 22:48:23] [DEV]		Auto-Saving files...
+[08/26 22:48:23] [DEV]		Finished auto-save.
+[08/26 23:48:23] [DEV]		Auto-Saving files...
+[08/26 23:48:23] [DEV]		Finished auto-save.
+[08/27 00:48:23] [DEV]		Auto-Saving files...
+[08/27 00:48:23] [DEV]		Finished auto-save.
+[08/27 01:48:23] [DEV]		Auto-Saving files...
+[08/27 01:48:23] [DEV]		Finished auto-save.
+[08/27 02:48:23] [DEV]		Auto-Saving files...
+[08/27 02:48:23] [DEV]		Finished auto-save.
+[08/27 03:48:23] [DEV]		Auto-Saving files...
+[08/27 03:48:23] [DEV]		Finished auto-save.
+[08/27 04:48:23] [DEV]		Auto-Saving files...
+[08/27 04:48:23] [DEV]		Finished auto-save.
+[08/27 05:48:23] [DEV]		Auto-Saving files...
+[08/27 05:48:23] [DEV]		Finished auto-save.
+[08/27 06:48:23] [DEV]		Auto-Saving files...
+[08/27 06:48:23] [DEV]		Finished auto-save.
+[08/27 07:48:23] [DEV]		Auto-Saving files...
+[08/27 07:48:23] [DEV]		Finished auto-save.
+[08/27 08:48:23] [DEV]		Auto-Saving files...
+[08/27 08:48:23] [DEV]		Finished auto-save.
+[08/27 09:48:24] [DEV]		Auto-Saving files...
+[08/27 09:48:24] [DEV]		Finished auto-save.
+[08/27 10:48:24] [DEV]		Auto-Saving files...
+[08/27 10:48:24] [DEV]		Finished auto-save.
+[08/27 11:48:24] [DEV]		Auto-Saving files...
+[08/27 11:48:24] [DEV]		Finished auto-save.
+[08/27 12:48:24] [DEV]		Auto-Saving files...
+[08/27 12:48:24] [DEV]		Finished auto-save.
+[08/27 13:17:09] [INFO]		Disabling MineConomy...
+[08/27 13:17:20] [DEV]		Enabling plugin...
+[08/27 13:17:20] [DEV]		Loading Config file...
+[08/27 13:17:20] [DEV]		Config file loaded!
+[08/27 13:17:20] [DEV]		MySQL is enabled for Accounts.
+[08/27 13:17:20] [INFO]		Loading Accounts from database...
+[08/27 13:17:20] [INFO]		Accounts loaded from database!
+[08/27 13:17:20] [DEV]		Loading Banks file...
+[08/27 13:17:20] [DEV]		Banks file loaded!
+[08/27 13:17:20] [DEV]		Loading Currency file...
+[08/27 13:17:20] [DEV]		Currency file loaded!
+[08/27 13:17:20] [DEV]		Loading Language file...
+[08/27 13:17:20] [DEV]		Language file loaded!
+[08/27 13:17:20] [INFO]		Interest Disabled.
+[08/27 13:17:20] [INFO]		Tax Disabled.
+[08/27 13:17:20] [INFO]		GUI Disabled.
+[08/27 13:17:20] [DEV]		Checking for updates...
+[08/27 13:17:20] [IMPORTANT]	Version 1.7.3 by Bodyash is enabled!
+[08/27 13:17:29] [DEV]		Auto-Saving files...
+[08/27 13:17:29] [DEV]		Finished auto-save.
+[08/27 14:17:27] [DEV]		Auto-Saving files...
+[08/27 14:17:27] [DEV]		Finished auto-save.
+[08/27 14:44:52] [INFO]		Disabling MineConomy...
+[08/27 14:45:39] [DEV]		Enabling plugin...
+[08/27 14:45:39] [DEV]		Loading Config file...
+[08/27 14:45:39] [DEV]		Config file loaded!
+[08/27 14:45:39] [DEV]		MySQL is enabled for Accounts.
+[08/27 14:45:39] [INFO]		Loading Accounts from database...
+[08/27 14:45:41] [INFO]		Accounts loaded from database!
+[08/27 14:45:41] [DEV]		Loading Banks file...
+[08/27 14:45:41] [DEV]		Banks file loaded!
+[08/27 14:45:41] [DEV]		Loading Currency file...
+[08/27 14:45:41] [DEV]		Currency file loaded!
+[08/27 14:45:41] [DEV]		Loading Language file...
+[08/27 14:45:41] [DEV]		Language file loaded!
+[08/27 14:45:41] [INFO]		Interest Disabled.
+[08/27 14:45:41] [INFO]		Tax Disabled.
+[08/27 14:45:41] [INFO]		GUI Disabled.
+[08/27 14:45:41] [DEV]		Checking for updates...
+[08/27 14:45:41] [IMPORTANT]	Version 1.7.3 by Bodyash is enabled!
+[08/27 14:46:26] [DEV]		Auto-Saving files...
+[08/27 14:46:26] [DEV]		Finished auto-save.
+[08/27 15:46:19] [DEV]		Auto-Saving files...
+[08/27 15:46:19] [DEV]		Finished auto-save.
+[08/27 16:46:19] [DEV]		Auto-Saving files...
+[08/27 16:46:19] [DEV]		Finished auto-save.
+[08/27 17:46:19] [DEV]		Auto-Saving files...

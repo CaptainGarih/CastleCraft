@@ -1,0 +1,100 @@
+#		Join Set
+on join:
+
+	wait 5 ticks
+	set player's gamemode to adventure
+	delete {server.cache.%player%.entry_chat}
+
+#		Inventory Set
+on join:
+
+	clear player's inventory
+
+	wait 5 ticks
+
+	set slot 1 of player's inventory to player's skull named "&dMy profile" with lore "&r " and "&7Right click to view your profile !"
+	wait 5 ticks
+	set slot 0 of player's inventory to compass named "&eGame selector" with lore "&r " and "&7Right click to see the Main Menu !"
+	wait 5 ticks
+	set slot 8 of player's inventory to emerald named "&bCollectibles" with lore "&r " and "&7Right click to see everything you collected!"
+
+#		Main Menu Interactions
+on inventory click:
+
+	if player's world is not "world":
+
+		stop
+
+	if player's gamemode != adventure:
+
+		stop
+
+	cancel event
+
+	play sound "gui.button.press" with volume 0.5 to the player
+
+	if name of event-item contains "%player%":
+
+		close player's inventory
+		wait 2 ticks
+		make player execute command "/profile %player%"
+	
+		stop
+	
+	if name of event-item contains "&c&lBack to main menu":
+
+		close player's inventory
+		wait 1 tick
+		Game_SetMainMenuToPlayer(player)
+
+		stop
+
+	if name of event-item contains "&eTeleport to Lobby":
+
+		close player's inventory
+		wait 1 tick
+		send bungee player named "%player%" to bungee server named "lobby"
+
+		stop
+
+#	   Navigation Menu
+on right click with compass:
+
+	if player's world is not "world":
+
+		stop
+
+	cancel event
+
+	Game_SetMainMenuToPlayer(player)
+
+command /menu:
+
+	trigger:
+
+		if player's world is not "world":
+
+			stop
+
+		Game_SetMainMenuToPlayer(player)
+
+on right click with emerald:
+
+	if player's world is not "world":
+
+		stop
+
+	cancel event
+
+	make player execute command "/gadgetsmenu main"
+
+on right click:
+
+	if player's world is not "world":
+
+		stop
+
+	if name of event-item contains "My Profile":
+
+		cancel event
+		make player execute command "/profile %player%"

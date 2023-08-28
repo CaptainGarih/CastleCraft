@@ -1,0 +1,249 @@
+options:
+
+	lobby.config.prefix: "&bLobby &6|"
+
+#       Pet name
+command /pet <text>:
+
+    usage: &e/pet &b<name>
+    trigger:
+
+        make player execute command "/gadgetsmenu namepet %arg-1%"
+
+#       Spawn Entities
+on spawn:
+
+    if event-world is "world":
+
+        if event-entity is not a player:
+
+            if spawn reason is natural or chunk generation or egg or mob spawner:
+            
+                delete event-entity
+
+#       Join & Leave message
+on join:
+
+    set join message to ""
+
+    wait 1 second
+
+    set {_rank} to placeholder "luckperms_prefix"
+
+    replace "&" with "§" in {_rank}
+
+    loop all players in world "world":
+        send "%{_rank}% %player% &a&ohas joined your session." to loop-player
+    
+    wait 15 ticks
+
+    teleport player to {lobby.config.spawn_location}
+
+on leave:
+
+    set quit message to ""
+
+    wait 1 second
+    
+    loop all players in world "world":
+        send "&7&o%player% &8&oleft your session." to loop-player
+
+#       Chat
+on chat:
+
+    if player's world is "world":
+
+        cancel event
+
+        set {_rank} to placeholder "luckperms_prefix"
+
+        replace "&" with "§" in {_rank}
+
+        set {_msg} to message
+
+        if player has permission "group.vip":
+
+            replace "&" with "§" in {_msg}
+        
+        loop all players in world "world":
+
+            send "%{_rank}% %player% &r%{_msg}%" to loop-player
+
+#       Player's interactions patch
+on jump:
+
+    if player's world is "world":
+    
+        if player's gamemode = adventure:
+
+            push the player upwards with force 0.2
+            push player forwards at speed 0.3
+    
+    else:
+
+        stop
+
+on block break:
+
+    if player's world is "world":
+
+        if player's gamemode = adventure:
+
+            cancel event
+        if player's gamemode = survival:
+
+            cancel event
+    
+    else:
+
+        stop
+
+on block place:
+
+    if player's world is "world":
+
+        if player's gamemode = adventure:
+
+            cancel event
+        if player's gamemode = survival:
+
+            cancel event
+    
+    stop
+
+on block damage:
+
+    if player's world is "world":
+
+        if player's gamemode = adventure:
+
+            cancel event
+        if player's gamemode = survival:
+
+            cancel event
+    
+    else:
+
+        stop
+
+on right click:
+
+    if player's world is "world":
+
+        if player's gamemode = adventure:
+
+            cancel event
+    
+    else:
+
+        stop
+
+on left click:
+
+    if player's world is "world":
+
+        if player's gamemode = adventure:
+
+            cancel event
+    
+    else:
+
+        stop
+
+on drop:
+
+    if player's world is "world":
+        
+        if player's gamemode = adventure:
+
+            cancel event
+    
+    else:
+
+        stop
+
+on inventory click:
+
+    if player's world is "world":
+
+        if player's gamemode = adventure:
+
+            cancel event
+    
+    else:
+
+        stop
+
+on damage:
+
+    if victim's world is "world":
+
+        cancel event
+    
+    else:
+
+        stop
+
+every 5 seconds:
+
+    loop all players in world "world":
+
+        feed loop-player
+        heal loop-player
+
+        if loop-player is op:
+
+            if loop-player's gamemode is creative or spectator:
+
+                wait 1 tick
+            
+            else:
+
+                set loop-player's gamemode to adventure
+
+        else:
+
+            set loop-player's gamemode to adventure
+
+#       Spawn Location
+command /setspawn:
+
+    permission: *
+    trigger:
+        
+        set {lobby.config.spawn_location} to player's location
+        send "%{@lobby.config.prefix}% &aLobby location successfully set." to player
+
+#       Slime block Effect
+on walk on slime block:
+
+    if player's world is "world":
+
+        push the player upwards with force 1.5
+        wait 1 tick
+        play sound "entity.ender_dragon.flap" with volume 5 at player for player
+
+    else:
+
+        stop
+
+#       Pressure plate Effect
+function PushPlate(p: player):
+
+    push {_p} upwards at force 2
+    push {_p} forwards at force 2
+    wait 1 tick
+    play sound "entity.ender_dragon.flap" with volume 5 at {_p} for {_p}
+
+on stepping on a pressure plate:
+
+    if player's world is "world":
+
+        if event-block is a golden pressure plate:
+            set {_p} to player
+            push {_p} upwards at force 2
+            push {_p} forwards at force 6
+    
+    else:
+
+        stop

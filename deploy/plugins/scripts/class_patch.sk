@@ -1,0 +1,11 @@
+#       Void
+every 1 seconds:
+
+    loop all players:
+
+        if "%loop-player's world%" contains "world":
+
+            set {_y} to y-pos of loop-player
+            if {_y} < 95:
+
+                teleport loop-player to {lobby.config.spawn_location}
