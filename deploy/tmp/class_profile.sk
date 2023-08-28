@@ -1,0 +1,152 @@
+on join:
+
+	wait 5 ticks
+	delete {server.cache.%player%.entry_chat}
+
+#		Define rank
+
+command /setrank <player> <text>:
+
+	usage: &e/setrank &f<player> &b<rank>
+	executable by: console
+	trigger:
+
+		set {kasaprofile.profile/data.rank::%arg-1%} to arg-2
+
+#		Interacts Profile Menu
+on inventory click:
+
+	if player's world is not "world":
+
+		stop
+
+	if name of event-inventory contains "&dMy Profile":
+
+		if index of event-slot = 31 or 32 or 33:
+		
+			close player's inventory
+
+			loop 25 times:
+
+				send " " to player
+				
+			wait 5 ticks
+				
+			send "&aEnter your socials in the chat" to player
+			send "&fExample: Twitter/@my_id" to player
+
+			if index of event-slot = 31:
+				set {server.cache.%player%.entry_chat} to "Socials.change=1"
+			if index of event-slot = 32:
+				set {server.cache.%player%.entry_chat} to "Socials.change=2"
+			if index of event-slot = 33:
+				set {server.cache.%player%.entry_chat} to "Socials.change=3"
+
+			play sound "entity.villager.trade" with volume 1 at player for player
+
+on chat:
+
+	if player's world is not "world":
+
+		stop
+
+	if {server.cache.%player%.entry_chat} is set:
+
+		if {server.cache.%player%.entry_chat} contains "Socials.change=1":
+
+			KASAPROFILE_DefinePlayerSocial(player, 1, message)
+			delete {server.cache.%player%.entry_chat}
+			send "&aSocial successfully changed!" to player
+			play sound "entity.villager.trade" with volume 1 at player for player
+		
+		if {server.cache.%player%.entry_chat} contains "Socials.change=2":
+
+			KASAPROFILE_DefinePlayerSocial(player, 2, message)
+			delete {server.cache.%player%.entry_chat}
+			send "&aSocial successfully changed!" to player
+			play sound "entity.villager.trade" with volume 1 at player for player
+		
+		if {server.cache.%player%.entry_chat} contains "Socials.change=3":
+
+			KASAPROFILE_DefinePlayerSocial(player, 3, message)
+			delete {server.cache.%player%.entry_chat}
+			send "&aSocial successfully changed!" to player
+			play sound "entity.villager.trade" with volume 1 at player for player
+
+#	   Define Profile Menu
+function OpenPlayerProfile(p: player, user: text):
+
+	if "[>%{_p}%<]" contains "[>%{_user}%<]":
+		set {_profile_ui.%{_p}%} to a new chest inventory with 6 rows named "&dMy Profile"
+	else:
+		set {_profile_ui.%{_p}%} to a new chest inventory with 6 rows named "&d%{_user}%&d's Profile"
+
+	open {_profile_ui.%{_p}%} to {_p}
+
+	set {_user_player} to {_user} parsed as a player
+	set slot 13 of {_profile_ui.%{_p}%} to {_user_player}'s skull named "&d%{_user}%"
+
+	set slot 29 of {_profile_ui.%{_p}%} to a gray wool named "&7Coming soon..."
+	wait 5 ticks
+	set {_rank} to {server.cache.player_data/%{_user_player}%.rank_prefix}
+	replace all "&" with "§" in {_rank}
+	set slot 30 of {_profile_ui.%{_p}%} to a diamond named "&bRank &f%{_rank}%"
+
+	set {_socials1} to KASAPROFILE_GetPlayerSocial({_user_player}, 1)
+	set {_socials2} to KASAPROFILE_GetPlayerSocial({_user_player}, 2)
+	set {_socials3} to KASAPROFILE_GetPlayerSocial({_user_player}, 3)
+
+	if "%{_socials1}%" contains "<none>":
+		set {_socials1} to "&7NOT DEFINED"
+		if "[>%{_p}%<]" contains "[>%{_user}%<]":
+			set slot 33 of {_profile_ui.%{_p}%} to a gray dye named "%{_socials1}%" with lore "&r " and "&7Click to change it!"
+		else:
+			set slot 31 of {_profile_ui.%{_p}%} to a gray dye named "%{_socials1}%"
+	else:
+		replace all "&" with "§" in {_socials1}
+		if "[>%{_p}%<]" contains "[>%{_user}%<]":
+			set slot 31 of {_profile_ui.%{_p}%} to a blue dye named "%{_socials1}%" with lore "&r " and "&7Click to change it!"
+		else:
+			set slot 31 of {_profile_ui.%{_p}%} to a blue dye named "%{_socials1}%"
+
+	if "%{_socials2}%" contains "<none>":
+		set {_socials2} to "&7NOT DEFINED"
+		if "[>%{_p}%<]" contains "[>%{_user}%<]":
+			set slot 33 of {_profile_ui.%{_p}%} to a gray dye named "%{_socials2}%" with lore "&r " and "&7Click to change it!"
+		else:
+			set slot 32 of {_profile_ui.%{_p}%} to a gray dye named "%{_socials2}%"
+	else:
+		replace all "&" with "§" in {_socials2}
+		if "[>%{_p}%<]" contains "[>%{_user}%<]":
+			set slot 32 of {_profile_ui.%{_p}%} to a yellow dye named "%{_socials2}%" with lore "&r " and "&7Click to change it!"
+		else:
+			set slot 32 of {_profile_ui.%{_p}%} to a yellow dye named "%{_socials2}%"
+
+	if "%{_socials3}%" contains "<none>":
+		set {_socials3} to "&7NOT DEFINED"
+		if "[>%{_p}%<]" contains "[>%{_user}%<]":
+			set slot 33 of {_profile_ui.%{_p}%} to a gray dye named "%{_socials3}%" with lore "&r " and "&7Click to change it!"
+		else:
+			set slot 33 of {_profile_ui.%{_p}%} to a gray dye named "%{_socials3}%"
+	else:
+		replace all "&" with "§" in {_socials3}
+		if "[>%{_p}%<]" contains "[>%{_user}%<]":
+			set slot 33 of {_profile_ui.%{_p}%} to a green dye named "%{_socials3}%" with lore "&r " and "&7Click to change it!"
+		else:
+			set slot 33 of {_profile_ui.%{_p}%} to a green dye named "%{_socials3}%"
+	
+	set slot 49 of {_profile_ui.%{_p}%} to barrier named "&c&lBack to main menu" with lore "&r " and "&7Click to return to the main menu !"
+
+#	   Open Profile Menu
+command /profile <text>:
+
+	usage: &d/profile &e<Player>
+	trigger:
+
+		loop all bungee players:
+
+			if "[>%loop-value%<]" contains "[>%arg-1%<]":
+				OpenPlayerProfile(player, arg-1)
+				stop
+		
+		send "&cNo player with this nickname was found." to player
